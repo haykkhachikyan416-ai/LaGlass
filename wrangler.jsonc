@@ -1,0 +1,15 @@
+{
+  // Cloudflare Workers static-assets config.
+  //
+  // The build produces a folder of prerendered HTML in ./dist; this tells
+  // `wrangler deploy` to serve it. There is no server-side code — the Worker
+  // only hands out static files.
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "laglass",
+  "compatibility_date": "2026-01-01",
+  "assets": {
+    "directory": "./dist",
+    // Unknown paths render the prerendered 404 page rather than a bare error.
+    "not_found_handling": "404-page"
+  }
+}
