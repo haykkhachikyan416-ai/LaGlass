@@ -44,25 +44,53 @@ repo: OWNER/REPO
 
 with your actual repository, for example `haykk/laglass`.
 
-### 2. Deploy to a host that rebuilds on push
+### 2. Deploy to Cloudflare Pages
 
-Netlify, Vercel, and Cloudflare Pages all work and have free tiers. Settings:
+In the Cloudflare dashboard: **Workers & Pages → Create → Pages → Connect to
+Git**, pick the `LaGlass` repository, then set:
 
+- **Framework preset:** None
 - **Build command:** `npm run build`
-- **Publish directory:** `dist`
+- **Build output directory:** `dist`
 
-You also need to let the editor sign in to GitHub. The simplest route is
-Netlify — enable **Identity** and **Git Gateway**, then change the backend in
-`config.yml` to:
+The repo includes `.node-version` (22), which Pages reads automatically. If a
+build ever fails on the Node version, set a `NODE_VERSION` environment
+variable to `22` in the Pages project settings.
 
-```yml
-backend:
-  name: git-gateway
-  branch: main
-```
+Every push to `main` rebuilds and republishes the site — including the pushes
+the editor makes when you save.
 
-On other hosts you register a GitHub OAuth app and point the editor at it —
-the Sveltia CMS docs cover this.
+### 3. Let the editor sign in (Cloudflare route)
+
+Cloudflare Pages has no built-in login service, so the editor signs in with
+**GitHub**. GitHub's OAuth needs a small endpoint to complete the handshake,
+and Sveltia publishes one designed to run as a Cloudflare Worker —
+`sveltia-cms-auth`. Since the site is already on Cloudflare, this stays in one
+account.
+
+Outline (follow the `sveltia-cms-auth` README for exact steps):
+
+1. **Register a GitHub OAuth app** — GitHub → Settings → Developer settings →
+   OAuth Apps. The callback URL is the Worker's URL.
+2. **Deploy the `sveltia-cms-auth` Worker** and give it the OAuth app's client
+   ID and secret as secrets. Never put these in this repository.
+3. **Point the editor at the Worker** by adding its URL to the backend block in
+   `public/admin/config.yml`:
+
+   ```yml
+   backend:
+     name: github
+     repo: haykkhachikyan416-ai/LaGlass
+     branch: main
+     base_url: https://your-worker.workers.dev
+   ```
+
+Anyone who should be able to edit needs a GitHub account with write access to
+the repository — add them under the repo's **Settings → Collaborators**.
+
+> If a GitHub account is too much friction for whoever ends up editing the
+> site, the alternative is a hosted CMS (for example Sanity) where they sign in
+> with an email address. That is a larger change — ask before assuming it.
 
 ### Then
 

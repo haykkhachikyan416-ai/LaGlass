@@ -1,0 +1,22 @@
+# Cloudflare Pages cache rules.
+# Vite fingerprints filenames in /assets, so those can be cached forever.
+
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/img/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/video/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# HTML must revalidate so content edits appear straight after a rebuild.
+/*.html
+  Cache-Control: public, max-age=0, must-revalidate
+
+/
+  Cache-Control: public, max-age=0, must-revalidate
+
+# The editor should never be indexed.
+/admin/*
+  X-Robots-Tag: noindex
