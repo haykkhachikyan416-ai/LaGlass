@@ -1,0 +1,54 @@
+{
+  "items": [
+    {
+      "slug": "shower-enclosures",
+      "href": "/services/shower-enclosures",
+      "title": "Frameless Shower Enclosures",
+      "image": "showerBrassCalacatta",
+      "summary": "Custom shower glass designed for the exact dimensions and style of each bathroom.",
+      "description": "Custom shower-glass installations designed for the dimensions and style of each bathroom, from frameless corner units to full-height steam enclosures.",
+      "intro": "A frameless enclosure is mostly glass and hardware, which means there is nowhere for an imprecise measurement to hide. Each panel is measured to the finished tile or stone, then fitted with hinges, clips, and channels chosen for the weight of the glass and the way the door needs to open.",
+      "details": [
+        { "title": "Corner and inline enclosures", "copy": "Two-panel corner units, single fixed panels with a swinging door, and inline panel-and-door layouts, sized to the opening rather than to a stock kit." },
+        { "title": "Full-height and steam enclosures", "copy": "Enclosures that run to the ceiling, with a header or transom panel where the layout calls for one." },
+        { "title": "Glass options", "copy": "Clear glass keeps a small bathroom feeling open. Rain and frosted glass add privacy while still passing light — both appear in recent LA Glass projects." },
+        { "title": "Hardware finishes", "copy": "Matte black, chrome, brushed nickel, and brushed brass have all been used on recent installations. Matching the room's existing fixtures is usually the safest choice." }
+      ]
+    },
+    {
+      "slug": "shower-doors",
+      "href": "/services/shower-enclosures",
+      "title": "Shower Doors",
+      "image": "showerFrostedDoors",
+      "summary": "Swinging and inline shower doors, including clear, rain, and frosted glass options.",
+      "description": "Shower doors measured and installed to fit the opening — clear, textured, or frosted glass with the hardware finish that suits the room.",
+      "intro": "",
+      "details": []
+    },
+    {
+      "slug": "glass-railings",
+      "href": "/services/glass-railings",
+      "title": "Glass Railings",
+      "image": "railingBrassStandoffs",
+      "summary": "Custom glass-railing installations for staircases, balconies, and interior spaces.",
+      "description": "Custom glass-railing installations for staircases, balconies, and interior spaces — standoff-mounted panels, capped rails, and post systems.",
+      "intro": "Railing glass is templated from the actual stairs or opening — including curved and winding runs — then installed with the mounting system that suits the structure underneath. A staircase that looks straight on a drawing rarely is, which is why the template comes off the real thing.",
+      "details": [
+        { "title": "Standoff-mounted panels", "copy": "Panels held off the stringer or floor with metal standoffs, leaving the glass edge exposed for the most open look." },
+        { "title": "Capped rails", "copy": "A slim metal cap runs along the top of the glass, giving a continuous handrail line along the flight." },
+        { "title": "Post systems", "copy": "Panels carried between posts, useful where the structure needs the load carried at fixed points." },
+        { "title": "Curved and winding runs", "copy": "Winder staircases and curved landings are templated on site so each panel follows the actual geometry." }
+      ]
+    },
+    {
+      "slug": "custom-glass",
+      "href": "/contact",
+      "title": "Custom Glass Installation",
+      "image": "showerRainGlass",
+      "summary": "Specialty glass projects beyond showers and railings — measured and installed to fit.",
+      "description": "A flexible category for custom glass projects that do not fit the main service groups, built around precise field measurements and clean installation.",
+      "intro": "",
+      "details": []
+    }
+  ]
+}

@@ -1,0 +1,264 @@
+@import "tailwindcss";
+
+@theme {
+  /* LA Glass design tokens — see docs/DESIGN-SYSTEM.md */
+  --color-ink: #171512;
+  --color-charcoal: #211e1a;
+  --color-charcoal-card: #2a2621;
+  --color-cream: #f4f1ea;
+  --color-surface: #ffffff;
+  --color-brass: #b08d57;
+  --color-brass-strong: #8f7348;
+  --color-brass-soft: #c9ac79;
+  --color-muted: #6a6257;
+  --color-muted-dark: #a9a297;
+  --color-line: #e4ded2;
+  --color-line-dark: rgb(201 172 121 / 0.25);
+
+  --font-display: "Fraunces Variable", ui-serif, Georgia, serif;
+  --font-sans: "Hanken Grotesk Variable", ui-sans-serif, system-ui, sans-serif;
+
+  --radius-btn: 0.5rem;
+  --radius-card: 0.875rem;
+  --radius-panel: 1.25rem;
+
+  --shadow-lift: 0 10px 30px -6px rgb(23 21 18 / 0.14);
+  --shadow-lift-dark: 0 12px 34px -8px rgb(0 0 0 / 0.5);
+
+  --ease-glass: cubic-bezier(0.22, 1, 0.36, 1);
+
+  --animate-hero-in: hero-in 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+
+  @keyframes hero-in {
+    from {
+      opacity: 0;
+      transform: translateY(14px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+@layer base {
+  html {
+    color-scheme: light;
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
+  body {
+    background-color: var(--color-cream);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    scroll-margin-top: 6rem;
+    text-wrap: balance;
+  }
+
+  ::selection {
+    background-color: rgb(176 141 87 / 0.35);
+  }
+
+  a,
+  button {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-brass);
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  /*
+   * Signature "glass edge" specular sweep: a soft diagonal band of light that
+   * crosses an image card once on hover or keyboard focus of its .group parent.
+   * Applied to the media wrapper (which must clip overflow).
+   */
+  .glass-sweep::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      105deg,
+      transparent 32%,
+      rgb(255 255 255 / 0.14) 48%,
+      transparent 64%
+    );
+    transform: translateX(-130%);
+    transition: transform 0.75s var(--ease-glass);
+    pointer-events: none;
+  }
+
+  .group:hover .glass-sweep::after,
+  .group:focus-visible .glass-sweep::after {
+    transform: translateX(130%);
+  }
+
+
+  /*
+   * CSS-only mobile menu. The drawer is toggled by a hidden checkbox, so it
+   * opens and closes with zero JavaScript — it cannot be broken by a failed or
+   * blocked JS bundle. #menu-toggle is a preceding sibling of .menu-overlay.
+   */
+  .menu-overlay {
+    visibility: hidden;
+    opacity: 0;
+    transition:
+      opacity 0.25s ease,
+      visibility 0s linear 0.25s;
+  }
+
+  #menu-toggle:checked ~ .menu-overlay {
+    visibility: visible;
+    opacity: 1;
+    transition:
+      opacity 0.25s ease,
+      visibility 0s linear 0s;
+  }
+
+  .menu-panel {
+    transform: translateX(100%);
+    transition: transform 0.3s var(--ease-glass);
+  }
+
+  #menu-toggle:checked ~ .menu-overlay .menu-panel {
+    transform: translateX(0);
+  }
+
+  /* Keyboard focus ring for the hidden checkbox, shown on its visible label. */
+  #menu-toggle:focus-visible ~ nav .menu-button,
+  #menu-toggle:focus-visible + .menu-button {
+    outline: 2px solid var(--color-cream);
+    outline-offset: 2px;
+  }
+
+  /* Lock background scrolling while the drawer is open (no JS needed). */
+  body:has(#menu-toggle:checked) {
+    overflow: hidden;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .menu-overlay,
+    .menu-panel {
+      transition: none;
+    }
+  }
+
+  /* ---- Interaction primitives ------------------------------------------ */
+
+  /*
+   * Button shine: a soft diagonal highlight that sweeps across on hover or
+   * keyboard focus. Subtle on purpose — it should read as light catching a
+   * polished edge, not a glare effect.
+   */
+  .btn-shine {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+  }
+
+  .btn-shine::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      100deg,
+      transparent 35%,
+      rgb(255 255 255 / 0.28) 50%,
+      transparent 65%
+    );
+    transform: translateX(-120%);
+    transition: transform 0.7s var(--ease-glass);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .btn-shine:hover::after,
+  .btn-shine:focus-visible::after {
+    transform: translateX(120%);
+  }
+
+  /* Keep label and icons crisp — the highlight passes behind them. */
+  .btn-shine > * {
+    position: relative;
+    z-index: 2;
+  }
+
+
+  /*
+   * Animated underline that wipes in from the left on hover/focus.
+   * Applied to quiet text links so they feel considered rather than plain.
+   */
+  .link-underline {
+    position: relative;
+  }
+
+  .link-underline::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    height: 1px;
+    width: 100%;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.35s var(--ease-glass);
+  }
+
+  .link-underline:hover::after,
+  .link-underline:focus-visible::after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+
+  /* Media card: slow cinematic zoom + lift, driven by a .group parent. */
+  .media-zoom {
+    transition: transform 0.9s var(--ease-glass);
+    will-change: transform;
+  }
+
+  .group:hover .media-zoom,
+  .group:focus-visible .media-zoom {
+    transform: scale(1.05);
+  }
+
+  .lift {
+    transition:
+      transform 0.35s var(--ease-glass),
+      box-shadow 0.35s var(--ease-glass),
+      border-color 0.35s var(--ease-glass);
+  }
+
+  .group:hover .lift,
+  .group:focus-visible .lift,
+  .lift:hover {
+    transform: translateY(-4px);
+  }
+
+  /*
+   * Owner decision: these micro-interactions (hover lifts of a few pixels,
+   * colour fades, the light sweep) stay enabled even under
+   * prefers-reduced-motion. They are small, hover-triggered, and contain no
+   * parallax or large travel — the kinds of motion the setting exists to
+   * suppress. The site owner runs with reduced motion enabled system-wide and
+   * asked for the interactions to be visible. Large motion is still avoided
+   * everywhere.
+   */
+}

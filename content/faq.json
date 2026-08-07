@@ -1,0 +1,14 @@
+{
+  "items": [
+    { "question": "What types of glass projects do you install?", "answer": "LA Glass specializes in custom glass installation, frameless shower enclosures, shower doors, and glass railings. Contact the team with project details to confirm whether your specific installation is a fit." },
+    { "question": "Which areas do you serve?", "answer": "LA Glass serves the Los Angeles area. Provide the project city or ZIP code when requesting a quote so the team can confirm service availability." },
+    { "question": "How do I request a quote?", "answer": "Reach out through the contact page with your contact information, project type, city or ZIP code, and a short description — or call directly. Estimates are free." },
+    { "question": "Do you provide custom measurements?", "answer": "Custom projects generally require accurate measurements. The exact measuring and planning process depends on the project and is confirmed directly with LA Glass." },
+    { "question": "When should the space be ready for measuring?", "answer": "Tile, stone, and paint are best finished before final measurements are taken. Glass is cut to the finished surface, so measuring before those are complete risks a fit that no longer matches the room." },
+    { "question": "Can I send photos of my project?", "answer": "Yes — photos help the team understand the space. After you reach out, you can share photos by text or email while discussing your project. Wide shots of the whole room are more useful than close-ups." },
+    { "question": "What hardware finishes are available?", "answer": "Recent LA Glass projects show matte black, chrome, brushed nickel, and brushed brass hardware. Ask about the finish you have in mind and the team will confirm what suits your project." },
+    { "question": "How long does installation take?", "answer": "Timing varies by project type, measurements, materials, fabrication, scheduling, and site conditions. LA Glass provides project-specific timing after reviewing the details." },
+    { "question": "Do you offer free estimates?", "answer": "Yes. LA Glass offers free estimates — share your project details through the contact page or by phone to get started." },
+    { "question": "Is LA Glass insured?", "answer": "Yes, LA Glass is insured. Include any project-specific requirements when requesting a quote and the team will walk you through the details." }
+  ]
+}

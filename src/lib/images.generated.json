@@ -1,0 +1,104 @@
+{
+  "Glass Railing 1.webp": {
+    "src": "/img/glass-railing-1-1600.webp",
+    "srcSet": "/img/glass-railing-1-480.webp 480w, /img/glass-railing-1-768.webp 768w, /img/glass-railing-1-1200.webp 1200w, /img/glass-railing-1-1600.webp 1600w",
+    "width": 1650,
+    "height": 2200
+  },
+  "glass railing 13.webp": {
+    "src": "/img/glass-railing-13-1600.webp",
+    "srcSet": "/img/glass-railing-13-480.webp 480w, /img/glass-railing-13-768.webp 768w, /img/glass-railing-13-1200.webp 1200w, /img/glass-railing-13-1600.webp 1600w",
+    "width": 1650,
+    "height": 2200
+  },
+  "glass railing 2.webp": {
+    "src": "/img/glass-railing-2-1600.webp",
+    "srcSet": "/img/glass-railing-2-480.webp 480w, /img/glass-railing-2-768.webp 768w, /img/glass-railing-2-1200.webp 1200w, /img/glass-railing-2-1600.webp 1600w",
+    "width": 1650,
+    "height": 2200
+  },
+  "IMG_2297.webp": {
+    "src": "/img/img-2297-1200.webp",
+    "srcSet": "/img/img-2297-480.webp 480w, /img/img-2297-768.webp 768w, /img/img-2297-1200.webp 1200w",
+    "width": 1440,
+    "height": 1920
+  },
+  "Logo.webp": {
+    "src": "/img/logo-150.webp",
+    "srcSet": "/img/logo-150.webp 150w",
+    "width": 150,
+    "height": 150
+  },
+  "railing15.webp": {
+    "src": "/img/railing15-1200.webp",
+    "srcSet": "/img/railing15-480.webp 480w, /img/railing15-768.webp 768w, /img/railing15-1200.webp 1200w",
+    "width": 1237,
+    "height": 2200
+  },
+  "shower enclosure.webp": {
+    "src": "/img/shower-enclosure-1200.webp",
+    "srcSet": "/img/shower-enclosure-480.webp 480w, /img/shower-enclosure-768.webp 768w, /img/shower-enclosure-1200.webp 1200w",
+    "width": 1440,
+    "height": 1800
+  },
+  "Shower.webp": {
+    "src": "/img/shower-1200.webp",
+    "srcSet": "/img/shower-480.webp 480w, /img/shower-768.webp 768w, /img/shower-1200.webp 1200w",
+    "width": 1440,
+    "height": 1800
+  },
+  "Shower1.webp": {
+    "src": "/img/shower1-1200.webp",
+    "srcSet": "/img/shower1-480.webp 480w, /img/shower1-768.webp 768w, /img/shower1-1200.webp 1200w",
+    "width": 1440,
+    "height": 1800
+  },
+  "Shower10.webp": {
+    "src": "/img/shower10-1200.webp",
+    "srcSet": "/img/shower10-480.webp 480w, /img/shower10-768.webp 768w, /img/shower10-1200.webp 1200w",
+    "width": 1440,
+    "height": 1920
+  },
+  "Shower11.webp": {
+    "src": "/img/shower11-768.webp",
+    "srcSet": "/img/shower11-480.webp 480w, /img/shower11-768.webp 768w",
+    "width": 1170,
+    "height": 2080
+  },
+  "Shower12.webp": {
+    "src": "/img/shower12-768.webp",
+    "srcSet": "/img/shower12-480.webp 480w, /img/shower12-768.webp 768w",
+    "width": 1170,
+    "height": 2080
+  },
+  "Shower2.webp": {
+    "src": "/img/shower2-1200.webp",
+    "srcSet": "/img/shower2-480.webp 480w, /img/shower2-768.webp 768w, /img/shower2-1200.webp 1200w",
+    "width": 1440,
+    "height": 1800
+  },
+  "Shower6.webp": {
+    "src": "/img/shower6-1200.webp",
+    "srcSet": "/img/shower6-480.webp 480w, /img/shower6-768.webp 768w, /img/shower6-1200.webp 1200w",
+    "width": 1440,
+    "height": 1920
+  },
+  "Shower7.webp": {
+    "src": "/img/shower7-1200.webp",
+    "srcSet": "/img/shower7-480.webp 480w, /img/shower7-768.webp 768w, /img/shower7-1200.webp 1200w",
+    "width": 1440,
+    "height": 1920
+  },
+  "Shower8.webp": {
+    "src": "/img/shower8-1200.webp",
+    "srcSet": "/img/shower8-480.webp 480w, /img/shower8-768.webp 768w, /img/shower8-1200.webp 1200w",
+    "width": 1440,
+    "height": 1920
+  },
+  "Shower9.webp": {
+    "src": "/img/shower9-1200.webp",
+    "srcSet": "/img/shower9-480.webp 480w, /img/shower9-768.webp 768w, /img/shower9-1200.webp 1200w",
+    "width": 1440,
+    "height": 1920
+  }
+}
