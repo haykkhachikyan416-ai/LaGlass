@@ -15,7 +15,7 @@ export default defineConfig({
   name: "laglass",
   title: "LA Glass",
 
-  projectId: process.env.SANITY_STUDIO_PROJECT_ID ?? "",
+  projectId: process.env.SANITY_STUDIO_PROJECT_ID ?? "6i8hnrv7",
   dataset: process.env.SANITY_STUDIO_DATASET ?? "production",
 
   plugins: [

@@ -12,11 +12,11 @@ import { createClient } from "@sanity/client";
 import { readFile } from "node:fs/promises";
 import path from "node:path";
 
-const PROJECT_ID = process.env.SANITY_PROJECT_ID;
+const PROJECT_ID = process.env.SANITY_PROJECT_ID ?? "6i8hnrv7";
 const TOKEN = process.env.SANITY_WRITE_TOKEN;
 const DATASET = process.env.SANITY_DATASET ?? "production";
 
-if (!PROJECT_ID || !TOKEN) {
+if (!TOKEN) {
   console.error(
     "Missing config.\n" +
       "  SANITY_PROJECT_ID   your project id (Sanity → Project settings)\n" +

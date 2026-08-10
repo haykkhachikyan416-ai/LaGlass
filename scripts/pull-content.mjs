@@ -13,7 +13,7 @@ import { createClient } from "@sanity/client";
 import { writeFile, readFile } from "node:fs/promises";
 import path from "node:path";
 
-const PROJECT_ID = process.env.SANITY_PROJECT_ID;
+const PROJECT_ID = process.env.SANITY_PROJECT_ID ?? "6i8hnrv7";
 const DATASET = process.env.SANITY_DATASET ?? "production";
 
 // Sanity document id -> content file it populates.
@@ -27,7 +27,7 @@ const MAP = {
 };
 
 if (!PROJECT_ID) {
-  console.log("[content] SANITY_PROJECT_ID not set — using committed /content files.");
+  console.log("[content] No Sanity project configured — using committed /content files.");
   process.exit(0);
 }
 

@@ -37,18 +37,27 @@ those stay out until real, verifiable details exist.
 
 # Setup — once
 
-## 1. Create the Sanity project
+## 1. Project — already done
 
-1. Sign up at **sanity.io** (free).
-2. Create a project named `LA Glass`, dataset **`production`**.
-3. From **Project settings**, copy the **Project ID** (looks like `ab12cd34`).
+- **Project:** La Glass
+- **Project ID:** `6i8hnrv7`
+- **Dataset:** `production`
+
+This id is already set as the default in `studio/sanity.config.ts` and in the
+build scripts, so no environment variables are required anywhere. (A project id
+is not a secret — it is visible in any Sanity-powered front end.)
+
+> Ignore Sanity's "create a new Studio with the CLI" onboarding step. The studio
+> already exists in `studio/`, with schemas matching this site's content.
+> Running that command would create a second, empty studio.
 
 ## 2. Load the current website content into it
 
-From the project root, using an **Editor** token from Sanity → **API → Tokens**:
+Create an **Editor** token: Sanity → **API → Tokens → Add API token**. Then from
+the project root:
 
 ```bash
-SANITY_PROJECT_ID=your_id SANITY_WRITE_TOKEN=your_token npm run content:seed
+SANITY_WRITE_TOKEN=your_token npm run content:seed
 ```
 
 This copies everything currently on the site into Sanity, so the editor opens
@@ -59,7 +68,8 @@ with real content rather than blank fields. Safe to re-run.
 ```bash
 cd studio
 npm install
-SANITY_STUDIO_PROJECT_ID=your_id npm run deploy
+npx sanity login     # once, opens a browser
+npm run deploy
 ```
 
 Choose a hostname when prompted — you get
@@ -68,19 +78,7 @@ Choose a hostname when prompted — you get
 Then open `public/admin/index.html`, find the line marked `STUDIO_URL`, and set
 it to that address so `yoursite.com/admin` forwards there.
 
-## 4. Let the build read from Sanity
-
-In Cloudflare → your Worker → **Settings → Variables**, add:
-
-| Name | Value |
-|---|---|
-| `SANITY_PROJECT_ID` | your project id |
-| `SANITY_DATASET` | `production` |
-
-Until this is set the site simply builds from the committed content, so nothing
-breaks in the meantime.
-
-## 5. Rebuild automatically when content is published
+## 4. Rebuild automatically when content is published
 
 1. In Cloudflare, create a **Deploy Hook** for the Worker and copy its URL.
 2. In Sanity → **API → Webhooks → Create webhook**:
@@ -91,7 +89,7 @@ breaks in the meantime.
 
 Now pressing **Publish** rebuilds and republishes the site on its own.
 
-## 6. Invite the owner
+## 5. Invite the owner
 
 Sanity → **Project → Members → Invite**. They receive an email, set a password,
 and sign in at the studio address on their phone. Give them **Editor** access —
