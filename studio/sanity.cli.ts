@@ -14,5 +14,12 @@ export default defineCliConfig({
   },
   /** Deployed studio hostname — https://laglass.sanity.studio */
   studioHost: "laglass",
-  autoUpdates: true,
+  deployment: {
+    // Auto-updates make the hosted studio pull Sanity's newest version at
+    // runtime. Left off because that code path crashes while resolving
+    // installed versions ("Failed to parse installed version"), and because a
+    // pinned build is the predictable choice for a site someone else owns:
+    // the studio cannot change under them without a deliberate redeploy.
+    autoUpdates: false,
+  },
 });
