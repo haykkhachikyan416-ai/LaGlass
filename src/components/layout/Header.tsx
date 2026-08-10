@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Menu, Phone } from "lucide-react";
 import { business, nav } from "@/lib/business";
 import { brand } from "@/lib/assets";
@@ -6,6 +6,7 @@ import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { MobileMenu } from "@/components/layout/MobileMenu";
 import { HeaderScrollState } from "@/components/layout/HeaderScrollState";
+import { cn } from "@/lib/cn";
 
 /**
  * Site header — server-rendered with no required client JavaScript.
@@ -20,6 +21,8 @@ import { HeaderScrollState } from "@/components/layout/HeaderScrollState";
  * only, so tapping the menu works without JavaScript.
  */
 export function Header() {
+  const { pathname } = useLocation();
+
   return (
     <header
       id="site-header"
@@ -62,20 +65,35 @@ export function Header() {
           </Link>
 
           <ul className="hidden items-center gap-7 lg:flex">
-            {nav.map((item) => (
-              <li key={item.href}>
-                <Link
-                  to={item.href}
-                  className="group/nav relative py-2 text-sm font-medium tracking-wide text-cream transition-colors duration-200 hover:text-brass-soft focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cream motion-reduce:transition-none"
-                >
-                  {item.label}
-                  <span
-                    aria-hidden
-                    className="absolute -bottom-0.5 left-1/2 h-px w-6 -translate-x-1/2 scale-x-0 bg-brass-soft transition-transform duration-300 ease-glass group-hover/nav:scale-x-100 group-focus-visible/nav:scale-x-100 motion-reduce:transition-none"
-                  />
-                </Link>
-              </li>
-            ))}
+            {nav.map((item) => {
+              const active =
+                item.href === "/"
+                  ? pathname === "/"
+                  : pathname.startsWith(item.href);
+              return (
+                <li key={item.href}>
+                  <Link
+                    to={item.href}
+                    aria-current={active ? "page" : undefined}
+                    className={cn(
+                      "group/nav relative py-2 text-sm font-medium tracking-wide transition-colors duration-200 hover:text-brass-soft focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cream motion-reduce:transition-none",
+                      active ? "text-brass-soft" : "text-cream",
+                    )}
+                  >
+                    {item.label}
+                    <span
+                      aria-hidden
+                      className={cn(
+                        "absolute -bottom-0.5 left-1/2 h-px w-6 -translate-x-1/2 bg-brass-soft transition-transform duration-300 ease-glass motion-reduce:transition-none",
+                        active
+                          ? "scale-x-100"
+                          : "scale-x-0 group-hover/nav:scale-x-100 group-focus-visible/nav:scale-x-100",
+                      )}
+                    />
+                  </Link>
+                </li>
+              );
+            })}
           </ul>
 
           <div className="flex items-center gap-3">

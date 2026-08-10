@@ -2,6 +2,7 @@ import { Outlet, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { MobileCallBar } from "@/components/layout/MobileCallBar";
 
 /** Scrolls to the top on route change, matching normal page-navigation feel. */
 function ScrollToTop() {
@@ -27,6 +28,7 @@ export default function App() {
         <Outlet />
       </main>
       <Footer />
+      <MobileCallBar />
     </div>
   );
 }
