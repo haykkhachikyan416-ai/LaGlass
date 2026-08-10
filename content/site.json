@@ -1,17 +1,17 @@
 {
-  "name": "LA Glass",
-  "tagline": "Custom Glass Installation · Los Angeles",
+  "completedProjects": "2,500+",
   "description": "LA Glass creates and installs custom shower enclosures, shower doors, glass railings, and architectural glass throughout the Los Angeles area.",
-  "phoneDisplay": "(818) 579-0569",
-  "phoneHref": "tel:+18185790569",
   "email": "laglasshelp@gmail.com",
-  "instagram": "https://www.instagram.com/la_glass_us/",
-  "tiktok": "https://www.tiktok.com/@la_glass",
+  "freeEstimates": true,
   "hoursDays": "Monday – Saturday",
   "hoursTime": "8:00 AM – 9:00 PM",
-  "serviceAreaStatement": "Serving the Los Angeles area",
-  "yearsExperience": "15+",
-  "completedProjects": "2,500+",
+  "instagram": "https://www.instagram.com/la_glass_us/",
   "insured": true,
-  "freeEstimates": true
+  "name": "LA Glass",
+  "phoneDisplay": "(818) 579-0569",
+  "phoneHref": "tel:+18185790569",
+  "serviceAreaStatement": "Serving the Los Angeles area",
+  "tagline": "Custom Glass Installation · Los Angeles",
+  "tiktok": "https://www.tiktok.com/@la_glass",
+  "yearsExperience": "15+"
 }

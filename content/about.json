@@ -1,4 +1,47 @@
 {
+  "audiences": [
+    {
+      "icon": "home",
+      "label": "Homeowners"
+    },
+    {
+      "icon": "hardhat",
+      "label": "General contractors"
+    },
+    {
+      "icon": "compass",
+      "label": "Interior designers"
+    },
+    {
+      "icon": "building",
+      "label": "Property managers"
+    }
+  ],
+  "craftCopy": "Custom glass is unforgiving of shortcuts. These are the habits that show up in the finished edge.",
+  "craftEyebrow": "How we work",
+  "craftHeading": "The standards behind every install",
+  "craftPoints": [
+    {
+      "copy": "Every project begins with precise field measurements. Glass is fabricated to the space, so panels, doors, and railings fit the way they should. Rooms are rarely square and walls are rarely plumb — measuring on site is what accounts for that.",
+      "title": "Accurate measurements"
+    },
+    {
+      "copy": "Hinges, channels, standoffs, and handles are set with attention to level, plumb, and even reveals — the details that separate a clean install from an average one.",
+      "title": "Careful installation and alignment"
+    },
+    {
+      "copy": "The goal on every job is a finished result that looks intentional: tidy edges, aligned hardware, and glass that sits true in the opening.",
+      "title": "Clean, finished results"
+    },
+    {
+      "copy": "Hardware and finishes are chosen to suit each project, from matte black and chrome to brushed nickel and brass, and installed to hold up to daily use.",
+      "title": "Dependable hardware"
+    },
+    {
+      "copy": "Straightforward updates from the first message through installation, so you always know what happens next.",
+      "title": "Clear communication"
+    }
+  ],
   "introEyebrow": "Who we are",
   "introHeading": "Experience you can measure",
   "introParagraphs": [
@@ -6,24 +49,8 @@
     "The approach is the same on every project: measure the space precisely, plan the glass and hardware around it, and install clean. LA Glass is insured and provides free estimates.",
     "Most of the work is residential — bathrooms being remodelled, staircases being opened up, spaces being brought up to date. The projects in the gallery are all real installations, photographed on site rather than staged."
   ],
-  "craftEyebrow": "How we work",
-  "craftHeading": "The standards behind every install",
-  "craftCopy": "Custom glass is unforgiving of shortcuts. These are the habits that show up in the finished edge.",
-  "craftPoints": [
-    { "title": "Accurate measurements", "copy": "Every project begins with precise field measurements. Glass is fabricated to the space, so panels, doors, and railings fit the way they should. Rooms are rarely square and walls are rarely plumb — measuring on site is what accounts for that." },
-    { "title": "Careful installation and alignment", "copy": "Hinges, channels, standoffs, and handles are set with attention to level, plumb, and even reveals — the details that separate a clean install from an average one." },
-    { "title": "Clean, finished results", "copy": "The goal on every job is a finished result that looks intentional: tidy edges, aligned hardware, and glass that sits true in the opening." },
-    { "title": "Dependable hardware", "copy": "Hardware and finishes are chosen to suit each project, from matte black and chrome to brushed nickel and brass, and installed to hold up to daily use." },
-    { "title": "Clear communication", "copy": "Straightforward updates from the first message through installation, so you always know what happens next." }
-  ],
-  "serveEyebrow": "Who we work with",
-  "serveHeading": "Trusted by homeowners and the trades alike",
   "serveCopy": "LA Glass takes on residential and approved commercial projects, working directly with the people planning the space.",
-  "audiences": [
-    { "icon": "home", "label": "Homeowners" },
-    { "icon": "hardhat", "label": "General contractors" },
-    { "icon": "compass", "label": "Interior designers" },
-    { "icon": "building", "label": "Property managers" }
-  ],
-  "serveFootnote": "Not sure if your project is a fit? Send the details and the team will let you know."
+  "serveEyebrow": "Who we work with",
+  "serveFootnote": "Not sure if your project is a fit? Send the details and the team will let you know.",
+  "serveHeading": "Trusted by homeowners and the trades alike"
 }

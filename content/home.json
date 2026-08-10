@@ -1,60 +1,104 @@
 {
-  "heroHeading": "Custom glass, installed with precision.",
-  "heroBody": "LA Glass creates and installs custom shower enclosures, shower doors, glass railings, and architectural glass throughout the Los Angeles area. Free estimates, Monday – Saturday.",
-  "heroPrimaryCta": "Request a free quote",
-  "heroSecondaryCta": "View our work",
-
-  "servicesEyebrow": "What we install",
-  "servicesHeading": "Glass work, measured and fitted to your space",
-  "servicesCopy": "LA Glass provides custom glass installation for residential and approved commercial projects across the Los Angeles area — built around precise measurements, clean installation, and dependable hardware.",
-
-  "featuredEyebrow": "Featured projects",
-  "featuredHeading": "Recent installations across Los Angeles",
-  "featuredCopy": "A selection of real LA Glass projects — no staging, no stock photography.",
-  "socialHeading": "See more of our work",
-  "socialCopy": "Fresh installations go up on Instagram and TikTok.",
-
-  "whyEyebrow": "Why LA Glass",
-  "whyHeading": "Workmanship you can see in the finished edge",
-  "whyCopy": "Custom glass is unforgiving of shortcuts. A panel cut a few millimetres wrong does not sit right, and no amount of hardware hides it. These are the standards behind every installation.",
-  "whyPoints": [
-    { "icon": "ruler", "title": "Custom measurements", "copy": "Every project starts with precise field measurements, so the glass fits the space — not the other way around." },
-    { "icon": "wrench", "title": "Careful installation", "copy": "Hardware, hinges, and channels aligned with a clean, modern installation approach." },
-    { "icon": "sparkles", "title": "Clean, modern results", "copy": "Attention to alignment and finish so the completed work looks the way the space deserves." },
-    { "icon": "message", "title": "Clear communication", "copy": "Straightforward project communication from the first message to the finished installation." },
-    { "icon": "pin", "title": "Los Angeles–area service", "copy": "Local to Los Angeles and focused on serving the surrounding area." },
-    { "icon": "images", "title": "Real project portfolio", "copy": "Every photo on this site is an actual LA Glass installation — nothing staged or borrowed." }
-  ],
-
-  "processEyebrow": "How it works",
-  "processHeading": "From first message to finished installation",
-  "processCopy": "Four steps, and you always know which one you are in.",
-  "processSteps": [
-    { "number": "01", "title": "Share your project", "copy": "Send basic project information, approximate dimensions when available, your location, and helpful photos. Photos of the full room are more useful than close-ups — they show how the glass meets the walls, floor, and any fixtures." },
-    { "number": "02", "title": "Review and estimate", "copy": "LA Glass reviews the details and follows up for anything needed to prepare your free estimate. If something about the space changes the approach, you hear about it now rather than on installation day." },
-    { "number": "03", "title": "Measure and plan", "copy": "Precise field measurements and project details are confirmed before fabrication or installation. Walls are rarely perfectly plumb, which is exactly why measuring on site matters more than measuring off a drawing." },
-    { "number": "04", "title": "Install", "copy": "The glass and hardware are installed according to the approved project scope, with the work area left clean." }
-  ],
-
-  "expectEyebrow": "What to expect",
-  "expectHeading": "Planning around your space",
-  "expectCopy": "A few things that make any glass project go smoothly.",
-  "expectPoints": [
-    { "title": "Finish your surfaces first", "copy": "Tile, stone, and paint should be complete before final measuring. Glass is cut to the finished surface, so measuring beforehand risks a fit that no longer matches the room." },
-    { "title": "Think about how the door should swing", "copy": "Which way a shower door opens affects splash, clearance, and how the room feels. It is worth deciding early rather than at installation." },
-    { "title": "Pick your hardware finish", "copy": "Finishes seen across recent LA Glass projects include matte black, chrome, brushed nickel, and brushed brass. Matching existing fixtures in the room usually reads best." },
-    { "title": "Clear access on installation day", "copy": "Glass panels are heavy and awkward to carry. A clear path from the door to the room makes the install faster and safer." }
-  ],
-
+  "areaCopy": "LA Glass serves customers throughout the Los Angeles area. Share your project city or ZIP code when requesting a quote so the team can confirm availability.",
   "areaEyebrow": "Service area",
   "areaHeading": "Local to Los Angeles",
-  "areaCopy": "LA Glass serves customers throughout the Los Angeles area. Share your project city or ZIP code when requesting a quote so the team can confirm availability.",
-
-  "faqEyebrow": "Common questions",
-  "faqHeading": "Frequently asked questions",
-
+  "ctaButton": "Request a free quote",
+  "ctaCopy": "Share the project type, location, and a few details. LA Glass will review the information and follow up about the next step.",
   "ctaEyebrow": "Free estimates",
   "ctaHeading": "Planning a custom glass project?",
-  "ctaCopy": "Share the project type, location, and a few details. LA Glass will review the information and follow up about the next step.",
-  "ctaButton": "Request a free quote"
+  "expectCopy": "A few things that make any glass project go smoothly.",
+  "expectEyebrow": "What to expect",
+  "expectHeading": "Planning around your space",
+  "expectPoints": [
+    {
+      "copy": "Tile, stone, and paint should be complete before final measuring. Glass is cut to the finished surface, so measuring beforehand risks a fit that no longer matches the room.",
+      "title": "Finish your surfaces first"
+    },
+    {
+      "copy": "Which way a shower door opens affects splash, clearance, and how the room feels. It is worth deciding early rather than at installation.",
+      "title": "Think about how the door should swing"
+    },
+    {
+      "copy": "Finishes seen across recent LA Glass projects include matte black, chrome, brushed nickel, and brushed brass. Matching existing fixtures in the room usually reads best.",
+      "title": "Pick your hardware finish"
+    },
+    {
+      "copy": "Glass panels are heavy and awkward to carry. A clear path from the door to the room makes the install faster and safer.",
+      "title": "Clear access on installation day"
+    }
+  ],
+  "faqEyebrow": "Common questions",
+  "faqHeading": "Frequently asked questions",
+  "featuredCopy": "A selection of real LA Glass projects — no staging, no stock photography.",
+  "featuredEyebrow": "Featured projects",
+  "featuredHeading": "Recent installations across Los Angeles",
+  "heroBody": "LA Glass creates and installs custom shower enclosures, shower doors, glass railings, and architectural glass throughout the Los Angeles area. Free estimates, Monday – Saturday.",
+  "heroHeading": "Custom glass, installed with precision.",
+  "heroPrimaryCta": "Request a free quote",
+  "heroSecondaryCta": "View our work",
+  "processCopy": "Four steps, and you always know which one you are in.",
+  "processEyebrow": "How it works",
+  "processHeading": "From first message to finished installation",
+  "processSteps": [
+    {
+      "copy": "Send basic project information, approximate dimensions when available, your location, and helpful photos. Photos of the full room are more useful than close-ups — they show how the glass meets the walls, floor, and any fixtures.",
+      "number": "01",
+      "title": "Share your project"
+    },
+    {
+      "copy": "LA Glass reviews the details and follows up for anything needed to prepare your free estimate. If something about the space changes the approach, you hear about it now rather than on installation day.",
+      "number": "02",
+      "title": "Review and estimate"
+    },
+    {
+      "copy": "Precise field measurements and project details are confirmed before fabrication or installation. Walls are rarely perfectly plumb, which is exactly why measuring on site matters more than measuring off a drawing.",
+      "number": "03",
+      "title": "Measure and plan"
+    },
+    {
+      "copy": "The glass and hardware are installed according to the approved project scope, with the work area left clean.",
+      "number": "04",
+      "title": "Install"
+    }
+  ],
+  "servicesCopy": "LA Glass provides custom glass installation for residential and approved commercial projects across the Los Angeles area — built around precise measurements, clean installation, and dependable hardware.",
+  "servicesEyebrow": "What we install",
+  "servicesHeading": "Glass work, measured and fitted to your space",
+  "socialCopy": "Fresh installations go up on Instagram and TikTok.",
+  "socialHeading": "See more of our work",
+  "whyCopy": "Custom glass is unforgiving of shortcuts. A panel cut a few millimetres wrong does not sit right, and no amount of hardware hides it. These are the standards behind every installation.",
+  "whyEyebrow": "Why LA Glass",
+  "whyHeading": "Workmanship you can see in the finished edge",
+  "whyPoints": [
+    {
+      "copy": "Every project starts with precise field measurements, so the glass fits the space — not the other way around.",
+      "icon": "ruler",
+      "title": "Custom measurements"
+    },
+    {
+      "copy": "Hardware, hinges, and channels aligned with a clean, modern installation approach.",
+      "icon": "wrench",
+      "title": "Careful installation"
+    },
+    {
+      "copy": "Attention to alignment and finish so the completed work looks the way the space deserves.",
+      "icon": "sparkles",
+      "title": "Clean, modern results"
+    },
+    {
+      "copy": "Straightforward project communication from the first message to the finished installation.",
+      "icon": "message",
+      "title": "Clear communication"
+    },
+    {
+      "copy": "Local to Los Angeles and focused on serving the surrounding area.",
+      "icon": "pin",
+      "title": "Los Angeles–area service"
+    },
+    {
+      "copy": "Every photo on this site is an actual LA Glass installation — nothing staged or borrowed.",
+      "icon": "images",
+      "title": "Real project portfolio"
+    }
+  ]
 }
