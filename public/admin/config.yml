@@ -6,7 +6,6 @@
 # SETUP (see docs/ADMIN.md):
 #   1. Deploy the sveltia-cms-auth Worker and add its URL as `base_url` below.
 #   2. Give each editor write access to the repository on GitHub.
-# DEPLOY-PROBE: auto-rebuild verified
 
 backend:
   name: github
