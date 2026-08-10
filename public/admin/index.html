@@ -5,13 +5,57 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="robots" content="noindex" />
     <title>LA Glass — Site Editor</title>
+    <style>
+      :root { color-scheme: dark; }
+      body {
+        margin: 0; min-height: 100svh; display: grid; place-items: center;
+        background: #171512; color: #f4f1ea; padding: 24px;
+        font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
+      }
+      .card { max-width: 32rem; text-align: center; }
+      h1 { font-size: 1.5rem; margin: 0 0 .5rem; letter-spacing: .01em; }
+      p { color: #a9a297; line-height: 1.6; margin: 0 0 1.5rem; }
+      a.btn {
+        display: inline-flex; align-items: center; justify-content: center;
+        min-height: 48px; padding: 0 28px; border-radius: 8px;
+        background: #b08d57; color: #171512; font-weight: 600;
+        text-decoration: none;
+      }
+      a.btn:hover { background: #c9ac79; }
+      code { background: #2a2621; padding: 2px 6px; border-radius: 4px; font-size: .85em; }
+      .setup { text-align: left; font-size: .9rem; color: #a9a297; }
+    </style>
   </head>
   <body>
-    <!--
-      Sveltia CMS: a Decap/Netlify-CMS-compatible editor that works well on a
-      phone. It reads and writes the JSON files in /content through GitHub, so
-      editing the site never requires touching code.
-    -->
-    <script src="https://unpkg.com/@sveltia/cms/dist/sveltia-cms.js" type="module"></script>
+    <div class="card">
+      <h1>LA Glass — Site Editor</h1>
+      <div id="go" hidden>
+        <p>Sign in with your email to edit the website.</p>
+        <a class="btn" id="link" href="#">Open the editor</a>
+      </div>
+      <div id="setup" class="setup">
+        <p>
+          The editor has not been connected yet. Deploy the studio
+          (<code>cd studio &amp;&amp; npm run deploy</code>), then set its address
+          on the line marked <code>STUDIO_URL</code> in
+          <code>public/admin/index.html</code>.
+        </p>
+        <p>Full instructions are in <code>docs/ADMIN.md</code>.</p>
+      </div>
+    </div>
+    <script>
+      // STUDIO_URL — set this to the deployed studio, e.g.
+      // "https://laglass.sanity.studio"
+      var STUDIO_URL = "";
+
+      if (STUDIO_URL) {
+        var go = document.getElementById("go");
+        document.getElementById("link").href = STUDIO_URL;
+        go.hidden = false;
+        document.getElementById("setup").hidden = true;
+        // Send people straight through; the button is the no-JS fallback.
+        location.replace(STUDIO_URL);
+      }
+    </script>
   </body>
 </html>

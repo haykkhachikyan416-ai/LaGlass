@@ -10,7 +10,7 @@ railings, and custom glass installation.
 - **vite-react-ssg** — every route is prerendered to static HTML, so the site is
   crawlable and works without JavaScript
 - **Tailwind CSS 4**
-- **Sveltia CMS** — phone-friendly editor at `/admin`
+- **Sanity** — phone-friendly editor with email sign-in (see `studio/`)
 - Output is a plain `dist/` folder that can be hosted anywhere
 
 ## Commands
@@ -18,18 +18,20 @@ railings, and custom glass installation.
 ```bash
 npm install
 npm run dev        # dev server
-npm run build      # generate images + prerender to dist/
+npm run build      # pull content + generate images + prerender to dist/
 npm run preview    # serve the production build on :3000
 npm run lint
 npm run typecheck
 npm run images     # regenerate responsive image variants only
-npm run admin      # local CMS bridge (see docs/ADMIN.md)
+npm run content:pull # pull latest content from Sanity
 ```
 
 ## Editing content
 
-All site copy lives in **`/content/*.json`** and is editable through the admin
-at `/admin` — no code required. See **[docs/ADMIN.md](docs/ADMIN.md)**.
+All site copy lives in **`/content/*.json`**. Those files are populated from
+Sanity at build time, so the owner edits with an email login and the site stays
+fully static. If Sanity is not configured, the committed JSON is used — the
+site always builds. See **[docs/ADMIN.md](docs/ADMIN.md)**.
 
 | File | Controls |
 |---|---|
