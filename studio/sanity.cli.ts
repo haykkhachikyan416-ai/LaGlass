@@ -15,6 +15,8 @@ export default defineCliConfig({
   /** Deployed studio hostname — https://laglass.sanity.studio */
   studioHost: "laglass",
   deployment: {
+    /** Identifies this deployed studio, so deploys never prompt. */
+    appId: "jed7v3yxjnmzd8v28qlkd2d8",
     // Auto-updates make the hosted studio pull Sanity's newest version at
     // runtime. Left off because that code path crashes while resolving
     // installed versions ("Failed to parse installed version"), and because a
