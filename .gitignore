@@ -40,3 +40,4 @@ yarn-error.log*
 # Vite build output
 dist
 .backup-nextjs
+.image-cache

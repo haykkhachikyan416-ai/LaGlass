@@ -18,6 +18,7 @@
  */
 
 import manifest from "@/lib/images.generated.json";
+import galleryDoc from "@content/gallery.json";
 
 export type ProjectCategory = "showers" | "railings" | "custom";
 
@@ -79,8 +80,8 @@ export const featuredProjects: ProjectImage[] = [
   projectImages.showerOnyx,
 ];
 
-/** Every verified project photo, in display order for the gallery. */
-export const galleryImages: ProjectImage[] = [
+/** The committed photo set, used whenever nothing has been uploaded in Sanity. */
+const committedGallery: ProjectImage[] = [
   projectImages.showerSteam,
   projectImages.railingBrassStandoffs,
   projectImages.showerBrassCalacatta,
@@ -98,3 +99,75 @@ export const galleryImages: ProjectImage[] = [
   projectImages.showerChromeHalfWall,
   projectImages.showerSubwayCorner,
 ];
+
+/* ------------------------------------------------------------------ *
+ * Photos uploaded through the studio
+ * ------------------------------------------------------------------ */
+
+type UploadedPhoto = {
+  asset?: { asset?: { _ref?: string }; _ref?: string };
+  alt?: string;
+  category?: string;
+};
+
+type ManifestEntry = {
+  src: string;
+  srcSet: string;
+  width: number;
+  height: number;
+  alt?: string;
+  category?: string;
+};
+
+/** Sanity nests the reference one level deeper than a plain image field. */
+function refOf(photo: UploadedPhoto): string | undefined {
+  return photo.asset?.asset?._ref ?? photo.asset?._ref;
+}
+
+/**
+ * Photos the owner uploaded, resolved against the variants the build
+ * generated for them. Anything without generated variants is skipped rather
+ * than rendered broken.
+ */
+const uploadedGallery: ProjectImage[] = ((galleryDoc as { items?: UploadedPhoto[] }).items ?? [])
+  .map((photo, index): ProjectImage | null => {
+    const ref = refOf(photo);
+    const entry = ref ? (files as Record<string, ManifestEntry>)[ref] : undefined;
+    if (!entry) return null;
+    const category = (photo.category ?? entry.category ?? "custom") as ProjectCategory;
+    return {
+      id: ref ?? `uploaded-${index}`,
+      src: entry.src,
+      srcSet: entry.srcSet,
+      width: entry.width,
+      height: entry.height,
+      alt: photo.alt ?? entry.alt ?? "",
+      category,
+    };
+  })
+  .filter((image): image is ProjectImage => image !== null);
+
+/**
+ * The gallery the site renders. Uploaded photos win when there are any, so the
+ * owner is in control; otherwise the committed, vetted set is used, which means
+ * the site can never end up with an empty gallery.
+ */
+export const galleryImages: ProjectImage[] =
+  uploadedGallery.length > 0 ? uploadedGallery : committedGallery;
+
+/** Look up a photo the owner attached to a service, if there is one. */
+export function uploadedServicePhoto(photo: unknown): ProjectImage | undefined {
+  const ref = refOf((photo ?? {}) as UploadedPhoto);
+  const entry = ref ? (files as Record<string, ManifestEntry>)[ref] : undefined;
+  if (!entry || !ref) return undefined;
+  const p = photo as UploadedPhoto;
+  return {
+    id: ref,
+    src: entry.src,
+    srcSet: entry.srcSet,
+    width: entry.width,
+    height: entry.height,
+    alt: p.alt ?? entry.alt ?? "",
+    category: (p.category ?? "custom") as ProjectCategory,
+  };
+}

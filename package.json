@@ -4,11 +4,11 @@
   "private": true,
   "scripts": {
     "dev": "vite-react-ssg dev --host",
-    "build": "node scripts/pull-content.mjs && node scripts/build-images.mjs && vite-react-ssg build",
+    "build": "node scripts/pull-content.mjs && node scripts/build-images.mjs && node scripts/sync-sanity-images.mjs && node scripts/build-sitemap.mjs && vite-react-ssg build",
     "preview": "vite preview --port 3000 --host",
     "lint": "eslint src --ext .ts,.tsx",
     "typecheck": "tsc --noEmit",
-    "images": "node scripts/build-images.mjs",
+    "images": "node scripts/build-images.mjs && node scripts/sync-sanity-images.mjs",
     "content:pull": "node scripts/pull-content.mjs",
     "content:seed": "node scripts/seed-sanity.mjs"
   },

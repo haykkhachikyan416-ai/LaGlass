@@ -33,6 +33,7 @@ const MAP = {
   aboutPage: "about.json",
   pageHeadings: "pages.json",
   servicesList: "services.json",
+  galleryList: "gallery.json",
   faqList: "faq.json",
 };
 

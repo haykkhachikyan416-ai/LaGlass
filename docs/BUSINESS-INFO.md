@@ -10,8 +10,8 @@
 ## Contact Information
 
 * Phone:[(818) 579-0569](tel:+18185790569) 
-* Public email: [laglasshelp@gmail.com](mailto:laglasshelp@gmail.com)
-* Quote-recipient email: [laglasshelp@gmail.com](mailto:laglasshelp@gmail.com)
+* Public email: [hovsephalajyan@gmail.com](mailto:hovsephalajyan@gmail.com)
+* Quote-recipient email: [hovsephalajyan@gmail.com](mailto:hovsephalajyan@gmail.com)
 * Instagram: https://www.instagram.com/la_glass_us/
 * TikTok: https://www.tiktok.com/@la_glass?_r=1&_t=ZP-97uCE15taZS
 *

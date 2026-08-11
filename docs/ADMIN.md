@@ -104,18 +104,29 @@ that lets them change content but not delete the project.
 3. Edit, press **Publish**
 4. The site updates within a minute or two
 
-## Adding new photos
+## Photos
 
-Photos are intentionally still a developer step, because each one needs
-checking (no installer reflections, no images of uncertain origin) and honest
-alt text:
+Photos are editable in the studio — upload straight from a phone.
 
-1. Put the image in `src/assets/`
-2. Add it to the approved list in `src/lib/assets.ts` **and** to `APPROVED` in
-   `scripts/build-images.mjs`
-3. Run `npm run images`
-4. Add its key to the `image` options list in
-   `studio/schemas/index.ts` so it can be selected
+- **Photo gallery** — add, remove, and drag to reorder. Each photo needs a
+  short description (used by screen readers and search engines) and a category
+  so the gallery filters work.
+- **Services** — each service can have its own photo attached.
+
+The build downloads every uploaded photo, resizes it into several widths, and
+serves those from the site itself. Visitors are never sent to Sanity for
+images, so the photos keep working even if the Sanity account later lapses.
+
+Two things worth knowing:
+
+- **The first build after uploading is slower**, because each new photo is
+  downloaded and resized once. After that they are cached.
+- **If nothing is uploaded, the committed photo set is used.** The gallery can
+  never end up empty.
+
+Before uploading, check the photo the way we checked the originals: no
+installer reflections in the glass, nobody identifiable, and it is genuinely
+your own work.
 
 ## Troubleshooting
 

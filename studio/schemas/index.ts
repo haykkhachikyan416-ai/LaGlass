@@ -9,6 +9,46 @@ import type { SchemaTypeDefinition } from "sanity";
  * editor sees a simple form rather than a list.
  */
 
+
+/**
+ * A project photograph.
+ *
+ * Alt text is required: it is what screen-reader users hear and what search
+ * engines read, and an empty one is worse than no photo. `hotspot` lets the
+ * owner choose what stays in frame when a photo is cropped to a card.
+ */
+const photo = {
+  name: "photo",
+  title: "Photo",
+  type: "object",
+  fields: [
+    {
+      name: "asset",
+      title: "Image",
+      type: "image",
+      options: { hotspot: true },
+      validation: (Rule: any) => Rule.required(),
+    },
+    {
+      name: "alt",
+      title: "Describe the photo",
+      type: "string",
+      description:
+        "Plainly describe what is installed, e.g. \"Frameless corner shower with matte-black hinges\". Used by screen readers and search engines.",
+      validation: (Rule: any) => Rule.required().min(10).max(160),
+    },
+    {
+      name: "category",
+      title: "Category",
+      type: "string",
+      options: { list: ["showers", "railings", "custom"] },
+      initialValue: "showers",
+      validation: (Rule: any) => Rule.required(),
+    },
+  ],
+  preview: { select: { title: "alt", subtitle: "category", media: "asset" } },
+};
+
 const point = {
   type: "object",
   fields: [
@@ -242,24 +282,10 @@ const servicesList: SchemaTypeDefinition = {
             { name: "href", title: "Link", type: "string" },
             { name: "title", title: "Title", type: "string" },
             {
-              name: "image",
+              name: "photo",
               title: "Photo",
-              type: "string",
-              description: "Chosen from the approved photo list.",
-              options: {
-                list: [
-                  "showerBrassCalacatta",
-                  "showerFrostedDoors",
-                  "railingBrassStandoffs",
-                  "showerRainGlass",
-                  "showerNickelCorner",
-                  "showerPandaMarble",
-                  "showerChromeHalfWall",
-                  "railingCurvedBrass",
-                  "railingBlackCapFoyer",
-                  "railingBlackPostsOak",
-                ],
-              },
+              type: photo.type,
+              fields: photo.fields,
             },
             { name: "summary", title: "Card summary", type: "text", rows: 2 },
             { name: "description", title: "Long description", type: "text", rows: 3 },
@@ -298,12 +324,31 @@ const faqList: SchemaTypeDefinition = {
   preview: { prepare: () => ({ title: "FAQ" }) },
 };
 
+
+const galleryList: SchemaTypeDefinition = {
+  name: "galleryList",
+  title: "Photo gallery",
+  type: "document",
+  fields: [
+    {
+      name: "items",
+      title: "Photos",
+      description:
+        "Drag to reorder. These appear on the Gallery page and the homepage featured section.",
+      type: "array",
+      of: [photo],
+    },
+  ],
+  preview: { prepare: () => ({ title: "Photo gallery" }) },
+};
+
 export const schemaTypes: SchemaTypeDefinition[] = [
   siteSettings,
   homePage,
   aboutPage,
   pageHeadings,
   servicesList,
+  galleryList,
   faqList,
 ];
 

@@ -10,6 +10,7 @@ import { WhatToExpect } from "@/components/home/WhatToExpect";
 import { ServiceArea } from "@/components/home/ServiceArea";
 import { Faq } from "@/components/home/Faq";
 import { FinalCta } from "@/components/home/FinalCta";
+import { StructuredData } from "@/components/StructuredData";
 
 export default function HomePage() {
   return (
@@ -19,6 +20,7 @@ export default function HomePage() {
         description="Custom shower enclosures, shower doors, glass railings, and glass installation throughout the Los Angeles area. View completed work and request a free quote."
         path="/"
       />
+      <StructuredData />
       <Hero />
       <TrustStrip />
       <ServicesOverview />

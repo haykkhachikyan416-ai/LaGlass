@@ -1,5 +1,5 @@
 import type { ProjectImage } from "@/lib/assets";
-import { projectImages } from "@/lib/assets";
+import { projectImages, uploadedServicePhoto } from "@/lib/assets";
 import { serviceContent, type Detail } from "@/content";
 
 export interface Service {
@@ -28,7 +28,8 @@ export const services: Service[] = serviceContent.map((s) => ({
   description: s.description,
   intro: s.intro,
   details: s.details,
-  image: byKey[s.image],
+  // An uploaded photo wins; otherwise fall back to the approved key.
+  image: uploadedServicePhoto((s as { photo?: unknown }).photo) ?? byKey[s.image],
 }));
 
 export function serviceBySlug(slug: string): Service | undefined {
