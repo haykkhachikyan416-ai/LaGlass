@@ -19,7 +19,7 @@ export default function GalleryPage() {
         title={pages.galleryIntroTitle}
         copy={pages.galleryIntroCopy}
       />
-      <section className="bg-cream py-16 sm:py-24">
+      <section className="bg-cream pb-16 pt-6 sm:py-24">
         <Container>
           <GalleryGrid images={galleryImages} />
         </Container>

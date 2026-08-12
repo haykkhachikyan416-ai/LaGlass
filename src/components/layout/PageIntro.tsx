@@ -16,7 +16,7 @@ export function PageIntro({
   copy?: string;
 }) {
   return (
-    <section className="bg-ink pb-16 pt-32 text-cream sm:pb-20 sm:pt-40">
+    <section className="bg-ink pb-10 pt-28 text-cream sm:pb-20 sm:pt-40">
       <Container>
         <Eyebrow tone="dark">{eyebrow}</Eyebrow>
         <GlassEdge tone="dark" className="mt-2" />

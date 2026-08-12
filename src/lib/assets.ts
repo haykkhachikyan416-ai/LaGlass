@@ -1,20 +1,25 @@
-
 /**
  * Typed manifest of approved LA Glass project photography.
  *
- * Originals live untouched in src/assets/ and are imported so Vite fingerprints
- * and copies them into the build. Descriptive ids and alt text live here instead
- * of renaming files. Every entry below was visually verified on 2026-07-10.
+ * Originals live untouched in src/assets/. `scripts/build-images.mjs` resizes
+ * the approved list into public/img and writes images.generated.json; this file
+ * gives each one a stable id and honest alt text. Every entry below was viewed
+ * upright (the phone originals carry EXIF orientation 6) on 2026-08-11.
  *
- * Excluded pending owner approval (do NOT import):
- * - "Shower3.webp"          — photographer clearly reflected in the glass
- * - "Shower 5.webp"         — two people visibly reflected in the dark marble
- * - "Shower13.webp"         — installer reflections in the polished black marble
- * - "Shower15.webp"         — person visible in the vanity-mirror reflection
- * - "IMG_2296.webp"         — two people reflected in the polished wall tile
- * - "glass railing 10.webp" — carries an AI-generator watermark; not a real project photo
- * - "mirror3.webp"          — staged/rendered look; authenticity unconfirmed
- * - "mirror5.webp"          — photographer fully visible in the mirror
+ * Excluded from the 46 supplied photos, and why — the originals are untouched
+ * in src/assets/, so any of these can be published later if the owner says so:
+ *
+ *   People visible or reflected in the glass
+ *     shower-5, shower-15, shower-16, shower-19, shower-25, railing-2,
+ *     railing-4, mirror-1, door-2
+ *
+ *   Room not finished, or the glass is not really the subject
+ *     shower-2 (packaging left in the pan), shower-11, shower-12, shower-23,
+ *     railing-5, closet-4 (clutter in frame)
+ *
+ *   Technical
+ *     closet-2 (letterboxed screenshot — black bars would show in the grid)
+ *     mirror-2 (stored on its side with no EXIF flag to correct it)
  */
 
 import manifest from "@/lib/images.generated.json";
@@ -45,59 +50,110 @@ function image(file: string, id: string, alt: string, category: ProjectCategory)
 
 export const brand = { logo: files["Logo.webp"].src } as const;
 
+/** The hand-built three-panel collage the owner supplied for the mobile hero. */
+export const mobileHero = image(
+  "header mobile.png",
+  "mobile-hero",
+  "Three LA Glass installations: a marble shower enclosure, a curved glass stair railing, and black-framed frosted closet doors",
+  "custom",
+);
+
 export const projectImages = {
-  showerSteam: image("shower enclosure.webp", "shower-steam", "Floor-to-ceiling glass steam-shower enclosure with polished-nickel hinges in a marble primary bathroom", "showers"),
-  showerBlackHardware: image("Shower.webp", "shower-black-hardware", "Frameless corner shower enclosure with matte-black hinges and clips in a white marble bathroom", "showers"),
-  showerSubwayCorner: image("Shower1.webp", "shower-subway-corner", "Frameless corner shower with matte-black hardware in a black-and-white subway-tile bathroom", "showers"),
-  showerRainGlass: image("Shower2.webp", "shower-rain-glass", "Rain-textured glass shower doors with a slim dark handle against black marble walls", "showers"),
-  showerNickelCorner: image("Shower6.webp", "shower-nickel-corner", "Frameless corner shower with a brushed-nickel header and hinges in a white marble bathroom", "showers"),
-  showerBrassCalacatta: image("Shower7.webp", "shower-brass-calacatta", "Frameless shower enclosure with brushed-brass hinges and handle in a calacatta-gold marble bathroom", "showers"),
-  showerFrostedDoors: image("Shower8.webp", "shower-frosted-doors", "Frosted-glass shower door and panel with a brushed-nickel handle for full privacy", "showers"),
-  showerGoldHillside: image("Shower9.webp", "shower-gold-hillside", "Gold-framed glass shower enclosure beside a freestanding tub with hillside views of Los Angeles", "showers"),
-  showerOnyx: image("Shower10.webp", "shower-onyx", "Frameless shower door with a brushed-nickel handle set in dramatic gray onyx-look stone", "showers"),
-  showerPandaMarble: image("Shower11.webp", "shower-panda-marble", "Frameless corner glass panels in a panda-marble shower with black-and-white veining", "showers"),
-  showerChromeHalfWall: image("Shower12.webp", "shower-chrome-half-wall", "Frameless corner shower glass mounted over a half wall, with chrome hardware and a pebble-tile pan", "showers"),
-  showerChromeCalacatta: image("IMG_2297.webp", "shower-chrome-calacatta", "Frameless panel-and-door shower with chrome hardware and a marble bench", "showers"),
-  railingBrassStandoffs: image("Glass Railing 1.webp", "railing-brass-standoffs", "Frameless glass stair railing mounted with brass standoffs on light oak stairs", "railings"),
-  railingBlackCapFoyer: image("glass railing 2.webp", "railing-black-cap-foyer", "Glass stair railing with a slim black cap rail in a two-story foyer", "railings"),
-  railingCurvedBrass: image("glass railing 13.webp", "railing-curved-brass", "Curved glass railing with brass standoff fittings following a winding staircase", "railings"),
-  railingBlackPostsOak: image("railing15.webp", "railing-black-posts-oak", "Glass stair railing with matte-black posts and handrail on oak treads", "railings"),
+  /* ---- Shower enclosures ---- */
+  showerPandaQuartzite: image("shower-3.jpeg", "shower-panda-quartzite", "Frameless corner shower enclosure with brushed-brass clips against bookmatched black-and-white quartzite", "showers"),
+  showerNeoAngleBronze: image("shower-4.jpeg", "shower-neo-angle-bronze", "Neo-angle frameless shower enclosure with oil-rubbed bronze hinges and a marble hex-tile floor", "showers"),
+  showerBrassBench: image("shower-6.jpeg", "shower-brass-bench", "Frameless corner shower with brushed-brass hardware, a built-in stone bench and gray marble walls", "showers"),
+  showerMarbleChrome: image("shower-7.jpeg", "shower-marble-chrome", "Frameless shower door and return panel with chrome hardware in a white marble bathroom", "showers"),
+  showerSteamBench: image("shower-8.jpeg", "shower-steam-bench", "Full-height frameless steam-shower enclosure with a marble bench and transom panel", "showers"),
+  showerBlackHillside: image("shower-9.jpeg", "shower-black-hillside", "Black marble steam shower with brushed-brass hardware beside a freestanding tub and a hillside window", "showers"),
+  showerCalacattaDoor: image("shower-10.jpeg", "shower-calacatta-door", "Frameless shower door and inline panel with polished-chrome hinges against calacatta-look porcelain", "showers"),
+  showerWhiteMatteBlack: image("shower-13.jpeg", "shower-white-matte-black", "Frameless shower enclosure with matte-black hinges, a corner bench and a white oak vanity", "showers"),
+  showerPandaBrass: image("shower-14.jpeg", "shower-panda-brass", "Frameless shower enclosure with brushed-brass clips and a floating bench in bookmatched panda marble", "showers"),
+  showerBlackSteamRoom: image("shower-18.jpeg", "shower-black-steam-room", "Two frameless glass doors set into a black marble steam room with brushed-brass hardware", "showers"),
+  showerCornerBronze: image("shower-20.jpeg", "shower-corner-bronze", "Frameless corner shower with oil-rubbed bronze clips and a marble mosaic pan", "showers"),
+  showerBrassTub: image("shower-21.jpeg", "shower-brass-tub", "Frameless corner shower with brushed-brass hardware next to a freestanding soaking tub", "showers"),
+  showerCheckerPan: image("shower-22.jpeg", "shower-checker-pan", "Frameless shower enclosure with matte-black hardware, a marble bench and a checkerboard mosaic pan", "showers"),
+  showerNeoAngleChrome: image("shower-24.jpeg", "shower-neo-angle-chrome", "Neo-angle frameless shower enclosure with chrome hardware and a pebble-mosaic floor", "showers"),
+  showerSlidingBarn: image("shower-26.jpeg", "shower-sliding-barn", "Sliding glass shower door on an exposed brushed-nickel track over a marble-look alcove", "showers"),
+  showerSteamMatteBlack: image("shower-27.jpeg", "shower-steam-matte-black", "Frameless steam-shower enclosure with matte-black hardware, a marble bench and a slate floor", "showers"),
+
+  /* ---- Glass railings ---- */
+  railingStairBlackCap: image("railing-1.jpeg", "railing-stair-black-cap", "Frameless glass stair railing with a slim black cap rail following a straight run of stairs", "railings"),
+  railingStoneLanding: image("railing-3.jpeg", "railing-stone-landing", "Glass stair and landing railing with a black cap rail above a stacked-stone wall", "railings"),
+  railingOakStair: image("railing-6.jpeg", "railing-oak-stair", "Glass stair railing with a black cap rail alongside light oak treads", "railings"),
+  railingMezzanine: image("railing-7.jpeg", "railing-mezzanine", "Glass mezzanine railing with a black cap rail overlooking a double-height living room", "railings"),
+  railingLandingShoe: image("railing-8.jpeg", "railing-landing-shoe", "Glass landing railing set in a black base shoe on a wide-plank oak floor", "railings"),
+  railingCurvedBrass: image("railing-9.jpeg", "railing-curved-brass", "Curved glass stair railing on brass standoffs following a winding staircase", "railings"),
+
+  /* ---- Other custom glass ---- */
+  partitionBrickRoom: image("shower-1.jpeg", "partition-brick-room", "Frameless glass partition panels with matte-black clamps enclosing a brick-walled tasting room", "custom"),
+  doorsBrassPulls: image("shower-17.jpeg", "doors-brass-pulls", "Double frameless glass doors with full-height brass pulls opening off a marble entry", "custom"),
+  wineCellarDoors: image("door-3.jpeg", "wine-cellar-doors", "Frameless glass wine-cellar doors set flush into a paneled wall", "custom"),
+  pantryDoorWoodPull: image("door-4.jpeg", "pantry-door-wood-pull", "Single frameless glass door with a wood pull opening into a walk-in pantry", "custom"),
+  closetBlackFramed: image("door-1.jpeg", "closet-black-framed", "Sliding closet doors in a black frame with frosted glass panels", "custom"),
+  closetBlackGrid: image("closet-3.jpeg", "closet-black-grid", "Floor-to-ceiling sliding closet doors with a black grid frame and frosted glass", "custom"),
+  closetFrostedBand: image("closet-1.jpeg", "closet-frosted-band", "Sliding closet doors with a slim aluminum frame and a frosted glass band", "custom"),
 } as const satisfies Record<string, ProjectImage>;
 
-/** Hero poster / video fallback image (clean, no people or reflections). */
-export const heroPoster = projectImages.showerSteam;
-
 /**
- * Featured Projects (home). Curated mix of showers and railings.
- * This list is the future data source for the 21st.dev Image Shuffle component.
+ * Names held by the service documents in Sanity.
+ *
+ * `content/services.json` is pulled from Sanity at build time and still stores
+ * the photo keys from the previous library. Those documents are not editable
+ * from here, so the four names they use are kept pointing at the closest
+ * equivalent in the current set. Removing them would blank every service photo.
  */
+const legacyKeys = {
+  showerBrassCalacatta: projectImages.showerPandaBrass,
+  showerFrostedDoors: projectImages.showerSlidingBarn,
+  showerRainGlass: projectImages.partitionBrickRoom,
+  railingBrassStandoffs: projectImages.railingCurvedBrass,
+} satisfies Record<string, ProjectImage>;
+
+/** Lookup used by services.ts, including the legacy names above. */
+export const imagesByKey: Record<string, ProjectImage> = { ...projectImages, ...legacyKeys };
+
+/** Featured Projects (home). A curated mix across all three categories. */
 export const featuredProjects: ProjectImage[] = [
-  projectImages.showerPandaMarble,
-  projectImages.railingBlackCapFoyer,
-  projectImages.showerChromeCalacatta,
-  projectImages.railingBlackPostsOak,
-  projectImages.showerSubwayCorner,
-  projectImages.showerOnyx,
+  projectImages.showerPandaQuartzite,
+  projectImages.railingCurvedBrass,
+  projectImages.showerBlackHillside,
+  projectImages.wineCellarDoors,
+  projectImages.showerPandaBrass,
+  projectImages.railingStoneLanding,
 ];
 
 /** The committed photo set, used whenever nothing has been uploaded in Sanity. */
 const committedGallery: ProjectImage[] = [
-  projectImages.showerSteam,
-  projectImages.railingBrassStandoffs,
-  projectImages.showerBrassCalacatta,
-  projectImages.showerBlackHardware,
+  projectImages.showerPandaQuartzite,
   projectImages.railingCurvedBrass,
-  projectImages.showerPandaMarble,
-  projectImages.showerGoldHillside,
-  projectImages.railingBlackCapFoyer,
-  projectImages.showerOnyx,
-  projectImages.showerRainGlass,
-  projectImages.railingBlackPostsOak,
-  projectImages.showerNickelCorner,
-  projectImages.showerChromeCalacatta,
-  projectImages.showerFrostedDoors,
-  projectImages.showerChromeHalfWall,
-  projectImages.showerSubwayCorner,
+  projectImages.showerBlackHillside,
+  projectImages.wineCellarDoors,
+  projectImages.showerPandaBrass,
+  projectImages.railingStoneLanding,
+  projectImages.showerSteamBench,
+  projectImages.closetBlackGrid,
+  projectImages.showerBlackSteamRoom,
+  projectImages.railingMezzanine,
+  projectImages.showerCheckerPan,
+  projectImages.doorsBrassPulls,
+  projectImages.showerNeoAngleBronze,
+  projectImages.railingOakStair,
+  projectImages.showerBrassBench,
+  projectImages.partitionBrickRoom,
+  projectImages.showerSteamMatteBlack,
+  projectImages.railingStairBlackCap,
+  projectImages.showerBrassTub,
+  projectImages.closetBlackFramed,
+  projectImages.showerWhiteMatteBlack,
+  projectImages.railingLandingShoe,
+  projectImages.showerNeoAngleChrome,
+  projectImages.pantryDoorWoodPull,
+  projectImages.showerMarbleChrome,
+  projectImages.showerCalacattaDoor,
+  projectImages.showerCornerBronze,
+  projectImages.closetFrostedBand,
+  projectImages.showerSlidingBarn,
 ];
 
 /* ------------------------------------------------------------------ *

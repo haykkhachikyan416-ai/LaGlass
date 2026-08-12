@@ -239,6 +239,26 @@
     transform: scale(1.05);
   }
 
+  /*
+   * Lightbox photo. The <img> is keyed by id, so stepping to the next photo
+   * remounts it and replays this — a short cross-fade that makes swiping feel
+   * like moving through a set rather than a page reloading in place.
+   */
+  .lightbox-photo {
+    animation: lightbox-in 0.28s var(--ease-glass) both;
+  }
+
+  @keyframes lightbox-in {
+    from {
+      opacity: 0;
+      scale: 0.985;
+    }
+    to {
+      opacity: 1;
+      scale: 1;
+    }
+  }
+
   .lift {
     transition:
       transform 0.35s var(--ease-glass),

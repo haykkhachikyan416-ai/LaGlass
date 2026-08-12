@@ -76,7 +76,7 @@ export default function AboutPage() {
               <Reveal delay={120} className="mt-8">
                 <div className="relative aspect-[4/3] overflow-hidden rounded-card border border-line">
                   <Img
-                    image={projectImages.showerNickelCorner}
+                    image={projectImages.showerSteamBench}
                     sizes="(min-width: 1024px) 45vw, 100vw"
                   />
                 </div>

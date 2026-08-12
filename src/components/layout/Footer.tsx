@@ -26,8 +26,8 @@ export function Footer() {
                 width={44}
                 height={44}
                 className="size-11 rounded-[6px]"
-        loading="lazy"
-      />
+                loading="lazy"
+              />
               <span className="font-display text-lg tracking-[0.14em]" translate="no">
                 LA GLASS
               </span>

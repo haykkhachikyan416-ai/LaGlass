@@ -36,7 +36,7 @@ export function ServiceArea() {
           </Reveal>
           <Reveal delay={120}>
             <div className="relative aspect-[3/4] max-h-[560px] overflow-hidden rounded-card border border-line-dark">
-              <Img sizes={"(min-width: 1024px) 45vw, 100vw"} image={projectImages.showerGoldHillside} className="object-cover" />
+              <Img sizes={"(min-width: 1024px) 45vw, 100vw"} image={projectImages.showerBlackHillside} className="object-cover" />
             </div>
           </Reveal>
         </div>

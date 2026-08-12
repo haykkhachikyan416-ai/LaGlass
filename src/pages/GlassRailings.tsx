@@ -16,9 +16,9 @@ export default function GlassRailingsPage() {
         title="Open sightlines, solid installation"
         images={[
           projectImages.railingCurvedBrass,
-          projectImages.railingBrassStandoffs,
-          projectImages.railingBlackCapFoyer,
-          projectImages.railingBlackPostsOak,
+          projectImages.railingStoneLanding,
+          projectImages.railingMezzanine,
+          projectImages.railingOakStair,
         ]}
       />
     </>

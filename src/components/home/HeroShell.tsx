@@ -1,27 +1,25 @@
 import { useEffect, useRef } from "react";
+import { mobileHero } from "@/lib/assets";
 
-const MOBILE_VIDEO = "/assets/video/hero-mobile.mp4";
 const DESKTOP_VIDEO = "/assets/video/hero-desktop.mp4";
-const MOBILE_POSTER = "/assets/video/hero-poster-mobile.jpg";
 const DESKTOP_POSTER = "/assets/video/hero-poster-desktop.jpg";
+const DESKTOP_QUERY = "(min-width: 1024px)";
 
 /**
- * Picks the clip for the viewport and starts playback.
+ * Starts the hero video, on desktop only.
  *
  * This runs as an inline script placed immediately after the <video> in the
  * prerendered HTML, so it executes while the page is still parsing — before the
- * browser has committed to downloading anything. That keeps the old guarantee
- * that a device only ever fetches the clip it actually shows. (Under Next.js a
- * server route did this from the User-Agent; a static build has no server, so
- * the decision moves here.)
+ * browser has committed to downloading anything. Phones never get a `src`
+ * assigned, so they never fetch the clip at all: the mobile hero is the
+ * owner-supplied collage above, which is a still image.
  */
 const PICK_SCRIPT = `
 (function(){
   var v = document.getElementById('hero-video');
   if (!v || v.src) return;
-  var phone = window.matchMedia('(max-width: 1023px)').matches;
-  v.poster = phone ? '${MOBILE_POSTER}' : '${DESKTOP_POSTER}';
-  v.src = phone ? '${MOBILE_VIDEO}' : '${DESKTOP_VIDEO}';
+  if (!window.matchMedia('${DESKTOP_QUERY}').matches) return;
+  v.src = '${DESKTOP_VIDEO}';
   v.muted = true; v.defaultMuted = true;
   var p = v.play();
   if (p && p.catch) p.catch(function(){});
@@ -36,9 +34,8 @@ export function HeroShell({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     const v = videoRef.current;
     if (!v || v.src) return;
-    const phone = window.matchMedia("(max-width: 1023px)").matches;
-    v.poster = phone ? MOBILE_POSTER : DESKTOP_POSTER;
-    v.src = phone ? MOBILE_VIDEO : DESKTOP_VIDEO;
+    if (!window.matchMedia(DESKTOP_QUERY).matches) return;
+    v.src = DESKTOP_VIDEO;
     v.muted = true;
     v.play().catch(() => {});
   }, []);
@@ -46,13 +43,53 @@ export function HeroShell({ children }: { children: React.ReactNode }) {
   return (
     <section
       aria-label="Introduction"
-      className="relative flex min-h-svh items-end overflow-hidden bg-ink text-cream"
+      className="relative overflow-hidden bg-ink text-cream lg:flex lg:min-h-svh lg:items-end"
     >
+      {/*
+        Mobile: the three-panel collage the owner assembled, at its own aspect
+        ratio (1170x1290). Cropping it to a full-height phone viewport would
+        cut away two of the three panels, so it sits at the top of the hero and
+        the copy runs beneath it on charcoal.
+
+        This is the mobile LCP, so it is eager and high priority — the one image
+        on the page that should not wait.
+      */}
+      <div className="relative lg:hidden">
+        {/*
+          The <source> is what stops desktop from downloading the collage:
+          hiding the wrapper with CSS does not prevent a fetch, but an
+          unmatched media query does. Above 1024px the browser resolves to the
+          desktop poster, which the <video> below needs anyway — same URL, so
+          it costs nothing extra and this element stays display:none.
+
+          Doing it this way rather than assigning the src from script keeps the
+          hero working with JavaScript switched off.
+        */}
+        <picture>
+          <source media="(min-width: 1024px)" srcSet={DESKTOP_POSTER} />
+          <img
+            src={mobileHero.src}
+            srcSet={mobileHero.srcSet}
+            sizes="100vw"
+            width={mobileHero.width}
+            height={mobileHero.height}
+            alt={mobileHero.alt}
+            decoding="async"
+            fetchPriority="high"
+            className="w-full"
+          />
+        </picture>
+        <div
+          aria-hidden
+          className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-ink to-transparent"
+        />
+      </div>
+
       <video
         id="hero-video"
         ref={videoRef}
         poster={DESKTOP_POSTER}
-        className="pointer-events-none absolute inset-0 size-full object-cover object-center"
+        className="pointer-events-none absolute inset-0 hidden size-full object-cover object-center lg:block"
         autoPlay
         muted
         loop
@@ -63,13 +100,13 @@ export function HeroShell({ children }: { children: React.ReactNode }) {
       />
       <script dangerouslySetInnerHTML={{ __html: PICK_SCRIPT }} />
 
-      {/* Contrast scrim between media and text. */}
+      {/* Contrast scrim between the desktop video and the text over it. */}
       <div
         aria-hidden
-        className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/45 to-ink/30"
+        className="absolute inset-0 hidden bg-gradient-to-t from-ink/90 via-ink/45 to-ink/30 lg:block"
       />
 
-      <div className="relative z-10 w-full pb-16 pt-28 sm:pb-20 lg:pb-24">
+      <div className="relative z-10 w-full pb-16 pt-10 sm:pb-20 lg:pb-24 lg:pt-28">
         {children}
       </div>
     </section>

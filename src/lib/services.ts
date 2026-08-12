@@ -1,5 +1,5 @@
 import type { ProjectImage } from "@/lib/assets";
-import { projectImages, uploadedServicePhoto } from "@/lib/assets";
+import { imagesByKey, uploadedServicePhoto } from "@/lib/assets";
 import { serviceContent, type Detail } from "@/content";
 
 export interface Service {
@@ -18,7 +18,7 @@ export interface Service {
  * `image` key there names an entry in the approved photo manifest, so content
  * edits can never point at an unapproved photograph.
  */
-const byKey = projectImages as Record<string, ProjectImage>;
+const byKey = imagesByKey;
 
 export const services: Service[] = serviceContent.map((s) => ({
   slug: s.slug,

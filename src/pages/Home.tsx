@@ -5,6 +5,7 @@ import { ServicesOverview } from "@/components/home/ServicesOverview";
 import { FeaturedProjects } from "@/components/home/FeaturedProjects";
 import { WhyUs } from "@/components/home/WhyUs";
 import { Stats } from "@/components/home/Stats";
+import { WorkInMotion } from "@/components/home/WorkInMotion";
 import { Process } from "@/components/home/Process";
 import { WhatToExpect } from "@/components/home/WhatToExpect";
 import { ServiceArea } from "@/components/home/ServiceArea";
@@ -27,6 +28,7 @@ export default function HomePage() {
       <FeaturedProjects />
       <WhyUs />
       <Stats />
+      <WorkInMotion />
       <Process />
       <WhatToExpect />
       <ServiceArea />

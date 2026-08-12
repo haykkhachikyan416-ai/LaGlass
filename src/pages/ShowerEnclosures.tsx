@@ -15,10 +15,10 @@ export default function ShowerEnclosuresPage() {
         eyebrow="Shower enclosures & doors"
         title="Shower glass built for your bathroom's exact dimensions"
         images={[
-          projectImages.showerNickelCorner,
-          projectImages.showerPandaMarble,
-          projectImages.showerChromeHalfWall,
-          projectImages.showerFrostedDoors,
+          projectImages.showerSteamBench,
+          projectImages.showerPandaQuartzite,
+          projectImages.showerBlackHillside,
+          projectImages.showerSlidingBarn,
         ]}
       />
     </>

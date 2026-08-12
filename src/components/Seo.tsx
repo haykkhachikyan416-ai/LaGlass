@@ -1,8 +1,14 @@
 import { Head } from "vite-react-ssg";
-import { heroPoster } from "@/lib/assets";
-
 const SITE_NAME = "LA Glass";
 const SITE_URL = import.meta.env.VITE_SITE_URL ?? "";
+
+/**
+ * Link-preview image. The desktop hero poster is used rather than a gallery
+ * photo because it is already landscape — Facebook, iMessage and X crop shares
+ * to roughly 1.91:1, which amputates the portrait phone photos the rest of the
+ * site is built from.
+ */
+const SHARE_IMAGE = "/assets/video/hero-poster-desktop.jpg";
 
 /**
  * Per-route document metadata.
@@ -25,7 +31,7 @@ export function Seo({
   const fullTitle =
     title === SITE_NAME ? title : `${title} | ${SITE_NAME}`;
   const url = SITE_URL ? `${SITE_URL}${path}` : undefined;
-  const image = SITE_URL ? `${SITE_URL}${heroPoster.src}` : heroPoster.src;
+  const image = SITE_URL ? `${SITE_URL}${SHARE_IMAGE}` : SHARE_IMAGE;
 
   return (
     <Head>
