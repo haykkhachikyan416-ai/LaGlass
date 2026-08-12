@@ -55,6 +55,33 @@ function clean(value) {
   return value;
 }
 
+/**
+ * Keeps services that exist in the repository but not yet in Sanity.
+ *
+ * A service is not only text: it has a card, a photo key, and sometimes a route
+ * and a page. When one is added in code, the Sanity document does not know
+ * about it yet, and a straight overwrite would silently drop it on the next
+ * build — the site would look correct locally and be missing a service live.
+ *
+ * So the two lists are merged by slug: Sanity wins for every service it knows
+ * (the owner's edits are authoritative), and anything only the repository has
+ * is appended. Running `npm run content:seed` pushes the full list up, after
+ * which Sanity knows every slug and this does nothing.
+ *
+ * Only the service list is merged. The other documents are singletons, where
+ * merging fields would hide a deliberate deletion by the owner.
+ */
+function mergeServices(fromSanity, committed) {
+  const known = new Set((fromSanity.items ?? []).map((s) => s.slug));
+  const missing = (committed.items ?? []).filter((s) => !known.has(s.slug));
+  if (!missing.length) return fromSanity;
+  console.warn(
+    `[content] servicesList: ${missing.map((s) => s.slug).join(", ")} ` +
+      `not in Sanity yet — kept from the repository. Run \`npm run content:seed\` to push them up.`,
+  );
+  return { ...fromSanity, items: [...(fromSanity.items ?? []), ...missing] };
+}
+
 let updated = 0;
 let skipped = 0;
 
@@ -75,7 +102,14 @@ for (const [docId, file] of Object.entries(MAP)) {
     continue;
   }
 
-  const next = clean(doc);
+  let next = clean(doc);
+
+  if (docId === "servicesList") {
+    const committed = await readFile(target, "utf8")
+      .then(JSON.parse)
+      .catch(() => ({}));
+    next = mergeServices(next, committed);
+  }
 
   // Refuse to overwrite good content with an empty document. Without this an
   // accidentally-cleared field in the editor could blank a whole section.

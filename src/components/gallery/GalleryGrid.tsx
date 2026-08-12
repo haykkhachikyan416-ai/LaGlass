@@ -8,7 +8,7 @@ const FILTERS = [
   { key: "all", label: "All work" },
   { key: "showers", label: "Showers" },
   { key: "railings", label: "Railings" },
-  { key: "custom", label: "Doors & closets" },
+  { key: "custom", label: "Mirrors & custom" },
 ] as const;
 
 type FilterKey = (typeof FILTERS)[number]["key"];
@@ -43,7 +43,7 @@ export function GalleryGrid({ images }: { images: ProjectImage[] }) {
     <>
       {/*
         The chip row sticks below the header, so you can switch category from
-        anywhere in a 29-photo scroll instead of returning to the top — the
+        anywhere in a long scroll instead of returning to the top — the
         single biggest difference on a phone.
 
         It scrolls sideways rather than wrapping, so the filters stay on one

@@ -23,9 +23,16 @@
 * Frameless shower enclosures
 * Shower doors
 * Glass railings
+* Custom mirrors
+* Storefronts
 
-Removed by owner request (2026-07-11): custom mirrors is no longer an
-advertised service and must not appear on the public site.
+Custom mirrors was removed by owner request on 2026-07-11 and reinstated by
+owner request on 2026-08-12.
+
+Storefronts added by owner request (2026-08-12). Only one storefront photo has
+been supplied, and no commercial capabilities beyond "measured and installed"
+are confirmed — do not publish claims about repair, emergency board-up,
+security glass, or code compliance until they are added here.
 
 ## Verified Business Claims
 

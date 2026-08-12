@@ -54,7 +54,13 @@ export function HeroShell({ children }: { children: React.ReactNode }) {
         This is the mobile LCP, so it is eager and high priority — the one image
         on the page that should not wait.
       */}
-      <div className="relative lg:hidden">
+      {/*
+        The header is fixed, so without this padding it covers the top of the
+        collage and you have to scroll up to see the whole thing. Matching the
+        header's own height (h-16, h-18 from sm) drops the image clear of it.
+        Desktop is unaffected: there the video is meant to run under the header.
+      */}
+      <div className="relative pt-16 sm:pt-18 lg:hidden lg:pt-0">
         {/*
           The <source> is what stops desktop from downloading the collage:
           hiding the wrapper with CSS does not prevent a fetch, but an

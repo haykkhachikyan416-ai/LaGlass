@@ -16,18 +16,31 @@ const OUT = "public/img";
 const WIDTHS = [480, 768, 1200, 1600];
 const QUALITY = 76;
 
-// Photos the owner has approved. This mirrors src/lib/assets.ts exactly — the
-// exclusions (people visible in the glass, unfinished rooms) are listed there.
-// Anything not in this set is never resized and never reaches the build.
-const pick = (prefix, ...ns) => ns.map((n) => `${prefix}-${n}.jpeg`);
+// Photos the owner has approved. Since 2026-08-12 that is the entire supplied
+// library — see the note at the top of src/lib/assets.ts. Anything not in this
+// set is never resized and never reaches the build.
+const series = (prefix, count) =>
+  Array.from({ length: count }, (_, i) => `${prefix}-${i + 1}.jpeg`);
 const APPROVED = new Set([
   "Logo.webp",
   "header mobile.png",
-  ...pick("shower", 1, 3, 4, 6, 7, 8, 9, 10, 13, 14, 17, 18, 20, 21, 22, 24, 26, 27),
-  ...pick("railing", 1, 3, 6, 7, 8, 9),
-  ...pick("door", 1, 3, 4),
-  ...pick("closet", 1, 3),
+  ...series("shower", 27),
+  ...series("railing", 9),
+  ...series("door", 4),
+  ...series("closet", 4),
+  ...series("mirror", 2),
 ]);
+
+/**
+ * Files with letterboxing baked into the pixels, and the upright rows that
+ * actually contain the picture. Cropping here fixes the photo everywhere at
+ * once, rather than every layout that shows it having to hide the bars.
+ */
+const CROP = {
+  // A screenshot rather than a camera roll photo: 106px of black above the
+  // picture and 106 below, measured on the rotated image.
+  "closet-2.jpeg": { top: 106, bottom: 1437 },
+};
 
 const slug = (f) =>
   path.parse(f).name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
@@ -46,9 +59,16 @@ for (const file of files) {
   before += meta.size ?? 0;
 
   // After auto-rotation the visual dimensions swap for orientation 6/8.
-  const upright = (meta.orientation ?? 1) >= 5
+  let upright = (meta.orientation ?? 1) >= 5
     ? { width: meta.height, height: meta.width }
     : { width: meta.width, height: meta.height };
+
+  // Applied after rotation, so the rows in CROP are the ones you see.
+  const crop = CROP[file];
+  const extract = crop
+    ? { left: 0, top: crop.top, width: upright.width, height: crop.bottom - crop.top + 1 }
+    : null;
+  if (extract) upright = { width: extract.width, height: extract.height };
 
   const base = slug(file);
   // Ladder up to the source width, capped at the largest standard width. The
@@ -60,8 +80,9 @@ for (const file of files) {
   const entries = [];
   for (const w of widths) {
     const name = `${base}-${w}.webp`;
-    const info = await sharp(input)
-      .rotate()
+    let pipeline = sharp(input).rotate();
+    if (extract) pipeline = pipeline.extract(extract);
+    const info = await pipeline
       .resize({ width: w, withoutEnlargement: true })
       .webp({ quality: QUALITY })
       .toFile(path.join(OUT, name));

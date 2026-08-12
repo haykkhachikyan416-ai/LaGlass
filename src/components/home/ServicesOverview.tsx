@@ -21,7 +21,7 @@ export function ServicesOverview() {
         <h2 id="services-heading" className="sr-only">
           Services
         </h2>
-        <ul className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <ul className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {services.map((service, index) => (
             <li key={service.title} className="h-full">
               <Reveal className="h-full" delay={Math.min(index, 2) * 90}>

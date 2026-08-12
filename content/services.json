@@ -73,6 +73,52 @@
       "slug": "custom-glass",
       "summary": "Specialty glass projects beyond showers and railings — measured and installed to fit.",
       "title": "Custom Glass Installation"
+    },
+    {
+      "slug": "custom-mirrors",
+      "href": "/contact",
+      "title": "Custom Mirrors",
+      "image": "mirroredClosetDoors",
+      "summary": "Mirrors cut and installed to the dimensions of the wall or opening they belong to.",
+      "description": "Custom mirror work measured and installed for bathrooms, bedrooms, closets, and other rooms across the Los Angeles area.",
+      "intro": "A mirror cut to the opening sits flat against the wall and reads as part of the room rather than something hung on it. Sizes, edgework, and fixings are worked out on site, because the wall is rarely as square as the drawing.",
+      "details": [
+        {
+          "title": "Wall and vanity mirrors",
+          "copy": "Cut to the finished opening, above a vanity or across a full wall."
+        },
+        {
+          "title": "Mirrored closet and wardrobe doors",
+          "copy": "Sliding mirrored doors in a slim metal frame, sized to the closet opening."
+        },
+        {
+          "title": "Edges and fixings",
+          "copy": "Polished or bevelled edges, and either a framed surround or concealed fixings, depending on the look you want."
+        }
+      ]
+    },
+    {
+      "slug": "storefronts",
+      "href": "/contact",
+      "title": "Storefronts",
+      "image": "storefrontDoubleDoor",
+      "summary": "Commercial storefront glass and entrance doors, measured and installed.",
+      "description": "Storefront glass and framed entrance doors for commercial spaces in the Los Angeles area.",
+      "intro": "A storefront is the part of a building that gets used hardest — every customer pushes through the same door. The glass and the frame are measured to the opening and installed to suit how the entrance actually gets used.",
+      "details": [
+        {
+          "title": "Entrance doors",
+          "copy": "Single and double framed glass doors with full-height pull handles."
+        },
+        {
+          "title": "Fixed glazing",
+          "copy": "Glass panels set into a framed storefront system alongside the doors."
+        },
+        {
+          "title": "Talk it through first",
+          "copy": "Send the opening dimensions and a photo of the frontage, and LA Glass will follow up about what the site needs."
+        }
+      ]
     }
   ]
 }
