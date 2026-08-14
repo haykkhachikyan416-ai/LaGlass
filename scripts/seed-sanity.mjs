@@ -67,15 +67,28 @@ function withKeys(value, seed = "k") {
 
 const tx = client.transaction();
 
+let queued = 0;
+
 for (const [docId, file] of Object.entries(MAP)) {
   const raw = JSON.parse(await readFile(path.join("content", file), "utf8"));
+
+  // Never replace a list document with an empty one. Photos and reviews only
+  // ever exist in Sanity — the committed file is a deliberately empty fallback
+  // — so seeding one over the owner's real content would delete work that
+  // exists nowhere else. There is nothing to push anyway.
+  if (Array.isArray(raw.items) && raw.items.length === 0) {
+    console.log(`skipped ${docId}  —  content/${file} has no items; Sanity keeps what it has`);
+    continue;
+  }
+
   const doc = { _id: docId, _type: docId, ...withKeys(raw) };
   tx.createOrReplace(doc);
+  queued++;
   console.log(`queued ${docId}  <-  content/${file}`);
 }
 
 await tx.commit();
 console.log(
-  `\nDone. ${Object.keys(MAP).length} documents written to project ${PROJECT_ID} (${DATASET}).\n` +
+  `\nDone. ${queued} document(s) written to project ${PROJECT_ID} (${DATASET}).\n` +
     "Open the studio and you should see the live website content.",
 );

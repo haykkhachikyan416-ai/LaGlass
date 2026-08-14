@@ -342,6 +342,76 @@ const galleryList: SchemaTypeDefinition = {
   preview: { prepare: () => ({ title: "Photo gallery" }) },
 };
 
+/**
+ * Customer reviews.
+ *
+ * Nothing a visitor submits on the website lands here automatically: reviews
+ * arrive by email and are typed in — or pasted from Google — only after they
+ * have been read. That is deliberate. It is also why there is no field for
+ * an overall star average: the site shows the reviews it actually has.
+ */
+const review = {
+  name: "review",
+  title: "Review",
+  type: "object",
+  fields: [
+    {
+      name: "quote",
+      title: "What they said",
+      type: "text",
+      rows: 5,
+      description: "Paste their words. Fix typos if you like, but do not rewrite the meaning.",
+      validation: (Rule: any) => Rule.required().min(20).max(1500),
+    },
+    {
+      name: "name",
+      title: "Name to show",
+      type: "string",
+      description: "The name they agreed to be shown by, e.g. \"Jane R.\"",
+      validation: (Rule: any) => Rule.required().min(2).max(60),
+    },
+    {
+      name: "rating",
+      title: "Rating out of 5",
+      type: "number",
+      options: { list: [5, 4, 3, 2, 1] },
+      validation: (Rule: any) => Rule.required().min(1).max(5),
+    },
+    { name: "location", title: "City (optional)", type: "string" },
+    { name: "service", title: "Work it was for (optional)", type: "string" },
+    {
+      name: "source",
+      title: "Where it came from",
+      type: "string",
+      options: { list: ["Website", "Google", "Yelp"] },
+      initialValue: "Website",
+    },
+  ],
+  preview: { select: { title: "name", subtitle: "quote" } },
+};
+
+const reviewsList: SchemaTypeDefinition = {
+  name: "reviewsList",
+  title: "Reviews",
+  type: "document",
+  fields: [
+    {
+      name: "items",
+      title: "Published reviews",
+      description:
+        "Only add reviews a real customer actually wrote. Drag to reorder — the first ones are read most.",
+      type: "array",
+      of: [review],
+    },
+    { name: "introEyebrow", title: "Page label", type: "string" },
+    { name: "introTitle", title: "Page heading", type: "string" },
+    { name: "introCopy", title: "Page intro", type: "text", rows: 3 },
+    { name: "formHeading", title: "Form heading", type: "string" },
+    { name: "formCopy", title: "Form intro", type: "text", rows: 3 },
+  ],
+  preview: { prepare: () => ({ title: "Reviews" }) },
+};
+
 export const schemaTypes: SchemaTypeDefinition[] = [
   siteSettings,
   homePage,
@@ -350,6 +420,7 @@ export const schemaTypes: SchemaTypeDefinition[] = [
   servicesList,
   galleryList,
   faqList,
+  reviewsList,
 ];
 
 /** Document types that should exist exactly once. */

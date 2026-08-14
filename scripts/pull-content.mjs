@@ -25,6 +25,7 @@ const MAP = {
   servicesList: "services.json",
   galleryList: "gallery.json",
   faqList: "faq.json",
+  reviewsList: "reviews.json",
 };
 
 if (!PROJECT_ID) {

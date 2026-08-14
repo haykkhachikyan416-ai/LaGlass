@@ -28,6 +28,7 @@ website down. If Sanity cannot be reached, the last committed content is used.
 | **Other page headings** | Titles and intros for Services, Gallery, Contact, Privacy, 404 |
 | **Services** | Names, summaries, descriptions, detail-page copy, and which approved photo each uses |
 | **FAQ** | Every question and answer — add, remove, reorder |
+| **Reviews** | Publish, edit, reorder, and remove customer reviews |
 
 Deliberately **not** editable: the approved photo list (only vetted photos can
 be chosen), and there are no fields for license wording or customer reviews —
@@ -103,6 +104,27 @@ that lets them change content but not delete the project.
 2. Sign in with email
 3. Edit, press **Publish**
 4. The site updates within a minute or two
+
+## Reviews
+
+Visitors can leave a review at **/reviews**. Nothing they write appears on the
+site by itself — it arrives as an email, exactly like a quote request. To
+publish one, open **Reviews** in the studio, add it, and press Publish.
+
+That is deliberate. It means every review on the website is one you have read
+and chosen to show, and it stops the page filling with spam. It also lets you
+type in reviews people left elsewhere: set **Where it came from** to Google or
+Yelp so readers can see where it was written.
+
+Until you publish the first one, the page says so plainly and shows only the
+form. There are no example reviews anywhere in the site, and no overall star
+average — the page shows the reviews that actually exist.
+
+Two rules worth keeping:
+
+- Publish only what a real customer actually wrote. Fix a typo if you like;
+  do not write one yourself or change what they meant.
+- Show people by the name they agreed to, and never their email address.
 
 ## Photos
 

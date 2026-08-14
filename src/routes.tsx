@@ -7,6 +7,7 @@ import GlassRailings from "@/pages/GlassRailings";
 import Gallery from "@/pages/Gallery";
 import About from "@/pages/About";
 import Contact from "@/pages/Contact";
+import Reviews from "@/pages/Reviews";
 import Privacy from "@/pages/Privacy";
 import NotFound from "@/pages/NotFound";
 
@@ -26,6 +27,7 @@ export const routes: RouteRecord[] = [
       { path: "services/glass-railings", element: <GlassRailings /> },
       { path: "gallery", element: <Gallery /> },
       { path: "about", element: <About /> },
+      { path: "reviews", element: <Reviews /> },
       { path: "contact", element: <Contact /> },
       { path: "privacy", element: <Privacy /> },
       { path: "404", element: <NotFound /> },

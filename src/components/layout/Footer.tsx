@@ -129,7 +129,13 @@ export function Footer() {
         </div>
       </Container>
 
-      <div className="border-t border-white/10">
+      {/*
+        The sticky call bar is fixed to the bottom of the viewport on phones
+        and was covering this row — the copyright and the service-area line sat
+        underneath it. The extra bottom padding below the lg breakpoint, where
+        that bar exists, gives it somewhere to sit.
+      */}
+      <div className="border-t border-white/10 pb-20 lg:pb-0">
         <Container className="flex flex-col gap-2 py-6 text-xs text-muted-dark sm:flex-row sm:items-center sm:justify-between">
           <p>
             © {new Date().getFullYear()} LA Glass. All rights reserved.
